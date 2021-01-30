@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+nav{
+    background: #3366cc !important;
+}
+.navbar a{
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px #000;
+}
+.tabHeader{
+    background: #5264AE !important;
+}
+.tabHeader a{
+    color: #ffffff !important;
+}
+.tabHeader a.active{
+    color: #000 !important;
+}
+.myCardStyle{
+    /* width: 13rem; */
+    height: 95% ; 
+    max-height: 100%;
+    box-shadow: 0 0 10px #cccccc !important;
+}
+.myCardStyle:hover, .myCardStyle:focus{
+    background: #cccccc !important;
+    box-shadow: 0 0 10px #000000 !important;
+}
+.cardImage{
+    height: 40vh;
+}
+.smallyText{ font-size: 0.6em; }
+.fontMaxSize{ 
+    max-height: 40%; 
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.myblogs{ border-left: 3px solid #0066cc;}
+.myblogs:hover{
+    color: darkgray !important;
+    z-index: -1;
+    border-left: 5px solid #003399;
+    box-shadow: 0 0 1px darkgrey;
+}
+.myblogs a{
+    text-decoration: none;
+}
+.myblogs a:hover{
+    text-decoration: underline;
+}
+p.sideMaxSize{ 
+    max-height : 17vh; 
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fluidImage{
+    height: 25vh;
+    object-fit: 100%;
+}
+
+@media (max-width: 550px){
+    .topBigImage{
+        height: 30vh;
+    }
+}
