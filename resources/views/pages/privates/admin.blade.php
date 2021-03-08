@@ -40,7 +40,7 @@
                 @include('includes.dashboardheader')
                 <div class="container-fluid dashboardBorder pt-2">
                     <h3 class="fw-bold mt-2">Dashboard</h3>
-                    <p class="fst-italic">Welcome User to your dashboard.</p>
+                    <p class="fst-italic">Welcome Admin to your dashboard.</p>
                     <hr />
                     <h5>Complete Overview</h5>
                     <div class="row">

@@ -15,10 +15,10 @@ class Blog extends Model
      * @var array
     */
     protected $fillable = [
+        'user_id', 
         'blog_title',
         'blog_body',
         'blogimage',
-        'user_id', 
         'blog_category_id'
     ];
 

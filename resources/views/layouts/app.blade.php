@@ -18,6 +18,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,7 +36,17 @@
         {{-- </div> --}}
     </div>
     {{-- <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script> --}}
-    
+    <script>
+        $(document).ready(function(){
+                                                            
+        //ClassicEditor.create($('#edit_about_text').get()[0]); this or below part.
+        //to elobrate I have added more codes
+            ClassicEditor.create( document.querySelector( '#editor' ))
+            .catch( error => {
+                console.log( error );
+            } );
+        });
+    </script>
 </body>
 {{-- <body>
     

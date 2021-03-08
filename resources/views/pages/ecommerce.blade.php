@@ -84,9 +84,26 @@
                             <div class="card mt-2 border-0 otherTitleCard mt-1 p-4 mx-auto shadow">
                                 <h4 class="text-white text-center">Nike Air Max 270 to King Dave 1</h4>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="mx-auto insideModal rounded mt-4">
-                                            <img src="images/shoe.jpg" class="img-thumbnail border-0 rounded shadow alt="shoe" />
+                                    <div id="carouselExampleSlidesOnly" class="col-12 carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                {{-- <div class="mx-auto insideModal rounded mt-4">
+                                                    <img src="images/shoe.jpg" class="img-thumbnail border-0 rounded shadow alt="shoe" />
+                                                </div> --}}
+                                                <img src="images/shoe.jpg" class="d-block w-100 rounded shadow alt="shoe" />
+                                            </div>
+                                            <div class="carousel-item">
+                                                {{-- <div class="mx-auto insideModal rounded mt-4">
+                                                    <img src="images/shoe.jpg" class="img-thumbnail border-0 rounded shadow alt="shoe" />
+                                                </div> --}}
+                                                <img src="images/shoe.jpg" class="d-block w-100 rounded shadow alt="shoe" />
+                                            </div>
+                                            <div class="carousel-item">
+                                                {{-- <div class="mx-auto insideModal rounded mt-4">
+                                                    <img src="images/shoe.jpg" class="img-thumbnail border-0 rounded shadow alt="shoe" />
+                                                </div> --}}
+                                                <img src="images/shoe.jpg" class="d-block w-100 rounded shadow alt="shoe" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 row my-2">

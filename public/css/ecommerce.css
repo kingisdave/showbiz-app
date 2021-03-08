@@ -101,3 +101,9 @@ h4.fw-bolder{
         width: 100%;
     }   
 }
+@media (max-width: 450px){
+    .productDetails .smallInsideModal{
+        height: 60px;
+        width: 60px;
+    }   
+}

@@ -3,17 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use App\Models\ProductCategory;
 
-class DashboardController extends Controller
+class ProductCategoryController extends Controller
 {
-    /**
-    * @return void
-    */
-   public function __construct()
-   {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $myblogs = auth()->user()->Blog;
-        
-        return view('pages.privates.dashboard')
-                ->with('myblogs', $myblogs);
+        //
     }
 
     /**
@@ -45,7 +35,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'product_category' => 'required|unique:product_categories,product_category|min:2|max:50'
+        ]);
+        $myId = auth()->user()->id;
+        $prodCat = ProductCategory::create(['product_category' => $request->product_category, 'user_id' => $myId]);
+        
+        if($prodCat)
+        {
+            return redirect('/dashboard/store')->with('successMessage', 'Product Category Added');
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -92,13 +93,4 @@ class DashboardController extends Controller
     {
         //
     }
-    public function blogger()
-    {
-        return view('pages.privates.blogger');
-    }
-    // public function shopper()
-    // {
-    //     return view('pages.privates.shopper');
-    // }
-
 }

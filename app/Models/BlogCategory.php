@@ -21,7 +21,7 @@ class BlogCategory extends Model
         'user_id'
     ];
     function user(){
-        return $this->hasMany('App\Models\BlogCategory');
+        return $this->belongsToMany('App\Models\User');
     }
 
     function blog(){

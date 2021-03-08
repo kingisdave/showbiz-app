@@ -6,19 +6,20 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function welcome(){
-
+    public function welcome()
+    {
         return view("pages.welcome");
-
     }
-    public function contact(){
-
+    public function contact()
+    {
         return view("pages.welcome");
-
     }
-    public function services(){
-
+    public function services()
+    {
         return view("pages.welcome");
-
+    }
+    public function shops()
+    {
+        return view('pages.ecommerce');
     }
 }

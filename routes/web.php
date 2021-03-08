@@ -11,6 +11,10 @@ use App\Http\Controllers\ShopsController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardBlogsController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\StocksController;
+use App\Http\Controllers\ProductCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +47,7 @@ Route::get('/cart', function () {
     
 Route::resource('blog', BlogsController::class);
 Route::resource('blog.comments', CommentsController::class)->shallow();
-Route::resource('shop', ShopsController::class);
+Route::get('/shop', [PagesController::class, 'shops']);
 
 Route::get('/auth/redirect/{provider}', [GoogleLoginController::class, 'redirect']);
 Route::get('/callback/{provider}', [GoogleLoginController::class, 'callback']);
@@ -53,10 +57,14 @@ Auth::routes();
 Route::get('/index', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/dashboard/store', [DashboardController::class, 'shopper']);
 Route::post('dashboard/blog/category', [BlogCategoriesController::class, 'store']);
+Route::post('dashboard/store/category', [ProductCategoryController::class, 'store']);
 // Route::get('dashboard/blog/category', [BlogCategoryController::class, 'index']);
 // Route::resource('dashboard/blog/category', BlogCategoryController::class)->only(['index', 'store']);
 Route::resource('dashboard/blog', DashboardBlogsController::class);
+Route::resource('dashboard/store/order', OrdersController::class);
+Route::resource('dashboard/store/product', ProductsController::class);
+Route::resource('dashboard/store/stock', StocksController::class);
+Route::resource('/dashboard/store', ShopsController::class);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

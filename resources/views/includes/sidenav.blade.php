@@ -3,7 +3,7 @@
 			<div class="sidebar">
 				<ul>
                     <li>
-                        <a href="/dashboard" class="active">
+                        <a href="/dashboard">
 							<span class="icon">
 								<i class="fa fa-home" aria-hidden="true"></i>
                             </span>
@@ -15,7 +15,7 @@
 							<span class="icon">
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             </span>
-                            <span class="title">Posts</span>
+                            <span class="title">Blogs</span>
                         </a>
                     </li>
 					<li>

@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
 
-class DashboardController extends Controller
+class ProductsController extends Controller
 {
-    /**
-    * @return void
-    */
-   public function __construct()
-   {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +18,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $myblogs = auth()->user()->Blog;
-        
-        return view('pages.privates.dashboard')
-                ->with('myblogs', $myblogs);
+        return view('pages.privates.product');
     }
 
     /**
@@ -92,13 +86,4 @@ class DashboardController extends Controller
     {
         //
     }
-    public function blogger()
-    {
-        return view('pages.privates.blogger');
-    }
-    // public function shopper()
-    // {
-    //     return view('pages.privates.shopper');
-    // }
-
 }
