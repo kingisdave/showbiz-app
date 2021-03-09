@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\StockImage;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Storage;
 
 class StocksController extends Controller
 {
@@ -25,8 +26,7 @@ class StocksController extends Controller
         $prodcats = ProductCategory::orderBy('product_category', 'asc')->get();
 
         $userId = Auth::user()->id;
-        $stocks= Stock::find($userId);
-
+        $stocks = Stock::orderBy('created_at', 'desc')->get();
         $stockImages = array();
         if($stocks){
             $mystocks = $stocks->all();
@@ -172,6 +172,17 @@ class StocksController extends Controller
             $unitimg = StockImage::where('stock_id', '=', $id)->get();
             if(count($unitimg) > 0){
                 foreach ($unitimg as $eachFile) {
+                    // $dirstore = Storage::files("public/stockgallery");
+                    // return $dirstore;
+                    // $dirstore = Storage::allFiles("stockgallery");
+                    // return $dirstore;
+                    // $usersImage = public_path("public/stockgallery/{$eachFile->stockImages}");
+                    // return $usersImage;
+                    Storage::delete($eachFile->stockImages);
+                    // if(Storage::exists($usersImage)){
+                        // unlink($usersImage);
+                        // Storage::delete($usersImage);
+                    // }
                     $eachFile->delete();
                 }
                 foreach($files as $file){
@@ -216,26 +227,11 @@ class StocksController extends Controller
      */
     public function destroy($id)
     {
-        $pickStock = Stock::find($id)->first();
+        $pickStock = Stock::find($id);
         if($pickStock){
-            // StockImage::where('stock_id', $pickStock->id)->delete();
-            StockImage::where('stock_id', $pickStock->id)->truncate();
+            StockImage::where('stock_id', $pickStock->id)->delete();
         }
-        // $downStock = $pickStock->delete();
-        // $myStockImages = array();
-        // if($pickStock){
-        //     $mypickStock = $pickStock->all();
-        //     foreach($mypickStock as $pickStock){
-        //         $stockid = $pickStock->id;
-        //         $stock_file = Stock::find($stockid)->stockImage;
-        //         return $stock_file;
-
-        //         $stock_file->delete();
-        //         // $pickStock['file'] = $stock_file;
-        //         // array_push($myStockImages, $pickStock);
-        //     };
-        // }
-        $downStock = $pickStock->truncate();
+        $downStock = $pickStock->delete();
         if($downStock){
             return redirect()->back()->with('successMessage', "Stock has been deleted");
         } else {

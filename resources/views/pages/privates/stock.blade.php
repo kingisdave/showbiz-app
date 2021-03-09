@@ -25,13 +25,17 @@
                         @endforeach
                     @endif
                     @if (session('successMessage'))
-                        <div class="alert alert-success logalert rounded-pill" role="alert">
-                            {{ session('successMessage') }}
+                        <div class="text-center">
+                            <span class="alert alert-success logalert rounded-pill" role="alert">
+                                {{ session('successMessage') }}
+                            </span>
                         </div>
                     @endif
                     @if(session('errorMessage'))
-                        <div class="alert alert-danger logalert rounded-pill" role="alert">
-                            {{ session('errorMessage') }}
+                        <div class="mx-auto">
+                            <span class="alert alert-danger logalert rounded-pill" role="alert">
+                                {{ session('errorMessage') }}
+                            </span>
                         </div>
                     @endif
                     <hr />
