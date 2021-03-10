@@ -29,6 +29,9 @@ class Stock extends Model
     function productCategory(){
         return $this->belongsTo('App\Models\ProductCategory');
     }
+    public function product(){
+        return $this->hasOne('App\Models\Product');
+    }
     function stockImage(){
         return $this->hasMany('App\Models\StockImage');
         // return $this->belongsToMany('App\Models\StockImage');

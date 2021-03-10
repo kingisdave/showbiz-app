@@ -172,17 +172,9 @@ class StocksController extends Controller
             $unitimg = StockImage::where('stock_id', '=', $id)->get();
             if(count($unitimg) > 0){
                 foreach ($unitimg as $eachFile) {
-                    // $dirstore = Storage::files("public/stockgallery");
-                    // return $dirstore;
-                    // $dirstore = Storage::allFiles("stockgallery");
-                    // return $dirstore;
-                    // $usersImage = public_path("public/stockgallery/{$eachFile->stockImages}");
-                    // return $usersImage;
+                 
                     Storage::delete($eachFile->stockImages);
-                    // if(Storage::exists($usersImage)){
-                        // unlink($usersImage);
-                        // Storage::delete($usersImage);
-                    // }
+    
                     $eachFile->delete();
                 }
                 foreach($files as $file){
@@ -229,6 +221,7 @@ class StocksController extends Controller
     {
         $pickStock = Stock::find($id);
         if($pickStock){
+            // Storage::delete($eachFile->stockImages);
             StockImage::where('stock_id', $pickStock->id)->delete();
         }
         $downStock = $pickStock->delete();

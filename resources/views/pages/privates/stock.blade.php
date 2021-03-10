@@ -23,6 +23,8 @@
                                 @endif    
                             @endif
                         @endforeach
+                    @else
+                        <p class="small">No Stock available yet</p>
                     @endif
                     @if (session('successMessage'))
                         <div class="text-center">
@@ -494,7 +496,7 @@
                                                                 <span class="float-start"><small class="small">Cost</small><br/>${{$stock->cost_price}}</span>
                                                                 <span class="float-end"><small class="small">Sell</small><br/>${{$stock->selling_price}}</span>
                                                             </h6>
-                                                            <h6>Product Description</h6>
+                                                            {{-- <h6>Product Description</h6> --}}
                                                             <p></p>
                                                             <p class="text-primary">
                                                                 Review: <i class="fa fa-star text-warning"></i>
@@ -505,12 +507,15 @@
                                                                 <small>5.0(40)</small>
                                                             </p>
                                                             <div class="text-center">
-                                                                <button class="btn btn-success text-white">
+                                                                <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
+                                                                    <i class="fa fa-arrow-right me-2"></i>Add to Products 
+                                                                </button>
+                                                                {{-- <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#AddProductModal{{$stock->id}}" title="Add To Product">
                                                                     <i class="fa fa-arrow-right me-2" onclick="var pp = <?php echo 'makeProduct'.$stock->id ?>; pp.submit() "></i>Add to Products 
                                                                 </button>
                                                                 <form method="POST" id="{{'makeProduct'.$stock->id}}" action="{{route('product.create', $stock->id)}}">
                                                                     @csrf
-                                                                </form>
+                                                                </form> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -645,6 +650,38 @@
                                             <div class="modal-footer">
                                                 <div class="col-12 clearfix">
                                                     <button class="float-end btn btn-primary text-white" id="editImageUpoad"><i class="fa warehouse me-2"></i>Edit Stock</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <!-- The Add To Product Modal -->
+                            <form method="POST" action="product">
+                                {{ csrf_field() }}
+                                <div class="modal fade productDetails" id="addProductModal{{$stock->id}}" tabindex="-1" aria-labelledby="addProductModalLabel{{$stock->id}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <h5 class="fw-bold">Add Product Description</h5>
+                                                <div class="container-fliud">
+                                                    <input type="number" name="stock_id" id="stock_id" value="{{$stock->id}}" class="form-control" hidden />
+                                                    <div class="form-group my-3">
+                                                        <label for="productDescription" class="my-2">Product Description</label>
+                                                        <textarea name="product_description" rows="6" id="product_descrition" class="form-control @error('product_description') is-invalid @enderror"
+                                                            required placeholder="One of the most unique products| Durable| Standard Size: 20|30|34|45|50... " ></textarea>
+                                                        @error('product_description')
+                                                            <small class="invalid-feedback" role="alert">
+                                                                {{ $message }}
+                                                            </small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-12 form-group">
+                                                        <button class="btn btn-primary form-control text-white"><i class="fa warehouse me-2"></i>Add to Products</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

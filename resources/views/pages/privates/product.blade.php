@@ -10,7 +10,22 @@
                 @include('includes.dashboardheader')
                 <div class="container-fluid dashboardBorder pt-2">
                     <h4 class="fw-bolder mt-2">Product</h4>
-                    <p class="small">50 new products available</p>
+                    @if(count($products) > 0)
+                        {{-- <p class="small">{{count($products)}} new stocks available</p> --}}
+                        @foreach($products as $product) 
+                            @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 ) 
+                                @if ($loop->count > 0)
+                                    <p class="small">{{$loop->count}} new products available</p>
+                                    @break
+                                @else
+                                    <p class="small">No New product available yet</p>
+                                    @break                        
+                                @endif
+                            @endif
+                        @endforeach
+                    @else
+                        <p class="small">No product available yet</p>
+                    @endif
                     <hr />
                     <div class="row shopOrdersRow bg-light">
                         <ul class="nav nav-tabs bg-info pt-2 small" id="myTab" role="tablist">
@@ -30,8 +45,8 @@
                         <div class="tab-content mt-3 pt-3" id="myTabContent">
                             <div class="tab-pane fade show active" id="allProducts" role="tabpanel" aria-labelledby="allProducts-tab">
                                 <div class="row">
-                                    <div class="row">
-                                        @if(count($products) > 0)
+                                    {{-- <div class="row"> --}}
+                                        {{-- @if(count($products) > 0)
                                             @foreach($products as $product)
                                                 <div class="col-md-3 col-sm-4 col-12">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-bs-whatever="@productOne">
@@ -39,18 +54,18 @@
                                                             <img src="/images/shoe.jpg" class="mx-auto" alt="shoe">
                                                             <div class="card-img-overlay d-flex align-items-end padOff">
                                                                 <div class="infoTextBelow belowText mx-auto small">
-                                                                    {{-- <h6 class="fw-bold">Card title</h6>
+                                                                    <h6 class="fw-bold">Card title</h6>
                                                                     <p class="clearfix">
                                                                         <span class="small float-start">$2334.55</span>
                                                                         <span class="small float-end bg-danger p-1">New</span>
-                                                                    </p> --}}
+                                                                    </p>
                                                                     <h6 class="fw-bold text-center">{{$product->product_name}}</h6>
                                                                     <p class="clearfix">
                                                                         <span class="small float-start">{{$product->selling_price}}</span>
                                                                         @if($product->created_at > now())
                                                                             <span class="small float-end bg-danger p-1">New</span>
-                                                                        {{-- @else --}}
-                                                                            {{-- <span class="small float-end bg-danger p-1">New</span> --}}
+                                                                        @else
+                                                                            <span class="small float-end bg-danger p-1">New</span>
                                                                         @endif
                                                                     </p>
                                                                 </div>
@@ -60,7 +75,7 @@
                                                 </div>
                                             @endforeach    
                                         @endif
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-3 col-sm-4 col-12">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-bs-whatever="@productOne">
@@ -347,35 +362,5 @@
                     URL.revokeObjectURL(mailHeaderImage.src) // free memory
                 }
             };
-            // $(document).ready(function() {
-            //     $('#logger').submit(function(e) {
-            //         e.preventDefault();
-            //         if (email.value=="" || password.value=="") {
-            //             $('#aler').fadeIn(1000).fadeOut(4000);
-            //             aler.hidden=false;
-            //             logerror.hidden = true;
-            //             return;
-            //         }
-            //         loader.hidden=false;
-            //         $.ajax({
-            //             type: "POST",
-            //             url: 'functions.php',
-            //             data: $(this).serialize(),
-            //             success: function(response)
-            //             {
-            //                 var jsonData = JSON.parse(response);
-            //                 // user is logged in successfully in the backend, now lets redirect
-            //                 if (jsonData.success == "1") {
-            //                     location.href = 'usernew.php';
-            //                 } else {
-            //                     logerror.hidden = false;
-            //                     aler.hidden=true;
-            //                     loader.hidden=true;
-
-            //                 }
-            //             }
-            //         })
-            //     });
-            // })
         </script>
     @endsection
