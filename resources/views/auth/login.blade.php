@@ -14,7 +14,7 @@
                                     @csrf
 
                                     <div class="form-floating my-3">
-                                        <input type="email" name="email" id="floatingInput" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" ">
+                                        <input type="email" name="email" id="floatingInput" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" placeholder=" ">
 
                                         <label for="floatingInput">Email address</label>
                                         

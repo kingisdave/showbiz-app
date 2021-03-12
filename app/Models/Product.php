@@ -9,6 +9,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'stock_id', 
+        'product_name',
+        'product_brand',
+        'product_quantity',
+        'product_category_id',
+        'product_description',
+        'product_price',
+    ];
+
     public function user(){
     	return $this->belongsTo('App\Models\User');
     }
@@ -17,6 +28,9 @@ class Product extends Model
     }
     public function stock(){
         return $this->hasOne('App\Models\Stock');
+    }
+    function stockImage(){
+        return $this->hasMany('App\Models\StockImage');
     }
     function order(){
         return $this->hasMany('App\Models\Order');
