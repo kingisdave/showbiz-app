@@ -18,10 +18,10 @@
                                 <button class="nav-link active" id="allOrders-tab" data-bs-toggle="tab" data-bs-target="#allOrders" type="button" role="tab" aria-controls="allOrders" aria-selected="true">All Orders</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="dispatch-tab" data-bs-toggle="tab" data-bs-target="#dispatch" type="button" role="tab" aria-controls="dispatch" aria-selected="false">Dispatch</button>
+                                <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</button>
+                                <button class="nav-link" id="dispatch-tab" data-bs-toggle="tab" data-bs-target="#dispatch" type="button" role="tab" aria-controls="dispatch" aria-selected="false">Dispatch</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab" aria-controls="completed" aria-selected="false">Completed</button>
@@ -35,24 +35,25 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Address</th>
-                                            <th>Date</th>
+                                            <th>Item</th>
+                                            <th>Qty</th>
                                             <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Date</th>
+                                            <th>Status/Action</th>
                                         </thead>
                                         <tbody>
                                             <tr class="my-1 shadow">
                                                 <td>1</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-primary">
-                                                    <i class="fa fa-circle me-2"></i>Completed
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
-                                                    <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden  title="Completed"></button>
+                                                    <small class="text-danger">Pending<small>
+                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
+                                                    <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
                                                 </td>
                                             </tr>
@@ -60,12 +61,12 @@
                                                 <td>2</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-success">
-                                                    <i class="fa fa-circle me-2"></i>Dispatch
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-success">Dispatch<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
                                                     <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
@@ -75,14 +76,14 @@
                                                 <td>3</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-danger">
-                                                    <i class="fa fa-circle me-2"></i>Pending
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch"></button>
+                                                    <small class="text-primary">Completed<small>
+                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
+                                                    <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden title="Completed"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
                                                 </td>
                                             </tr>
@@ -97,22 +98,23 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Address</th>
-                                            <th>Date</th>
+                                            <th>Item</th>
+                                            <th>Qty</th>
                                             <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Date</th>
+                                            <th>Status/Action</th>
                                         </thead>
                                         <tbody class="">
                                             <tr class="my-1 shadow">
                                                 <td>1</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-success">
-                                                    <i class="fa fa-circle me-2"></i>Dispatch
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-success">Dispatch<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
                                                     <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
@@ -122,12 +124,12 @@
                                                 <td>2</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-success">
-                                                    <i class="fa fa-circle me-2"></i>Dispatch
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-success">Dispatch<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
                                                     <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
@@ -144,22 +146,23 @@
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Address</th>
-                                            <th>Date</th>
+                                            <th>Item</th>
+                                            <th>Qty</th>
                                             <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Date</th>
+                                            <th>Status/Action</th>
                                         </thead>
                                         <tbody class="">
                                             <tr class="my-1 shadow">
                                                 <td>1</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-danger">
-                                                    <i class="fa fa-circle me-2"></i>Pending
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-danger">Pending<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
                                                     <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
@@ -169,12 +172,12 @@
                                                 <td>2</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-danger">
-                                                    <i class="fa fa-circle me-2"></i>Pending
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-danger">Pending<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
                                                     <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch"></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
@@ -201,12 +204,12 @@
                                                 <td>1</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-primary">
-                                                    <i class="fa fa-circle me-2"></i>Completed
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-primary">Completed<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
                                                     <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
@@ -216,12 +219,12 @@
                                                 <td>2</td>
                                                 <td>Dave David</td>
                                                 <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>23rd Feb, 2021</td>
+                                                <td>Fancy Snickers</td>
+                                                <td>5</td>
                                                 <td>#330.33</td>
-                                                <td><small class="text-primary">
-                                                    <i class="fa fa-circle me-2"></i>Completed
-                                                <small></td>
+                                                <td>23rd Feb, 2021</td>
                                                 <td>
+                                                    <small class="text-primary">Completed<small>
                                                     <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
                                                     <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden></button>
                                                     <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 
@@ -18,10 +20,19 @@ class ShopsController extends Controller
      */
     public function index()
     {
+        $user_id = auth()->user()->id;
 
-        $prodcats = ProductCategory::orderBy('product_category', 'asc')->get();
+        $prodcats = ProductCategory::where('user_id', $user_id)
+                                ->orderBy('product_category', 'asc')->get();
+        $stocks = auth()->user()->Stock;
+        $orders = Order::all();
+        // return $orders;
+        $products = auth()->user()->Product;
         return view('pages.privates.shopper')
-                ->with('prodcats', $prodcats);
+                ->with('prodcats', $prodcats)
+                ->with('stocks', $stocks)
+                ->with('orders', $orders)
+                ->with('products', $products);
     }
 
     /**

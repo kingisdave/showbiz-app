@@ -32,7 +32,7 @@ h4.fw-bolder{
 .cardHeight{
     background: #b3e6ff;
     background: radial-gradient(circle, #b3e6ff, #cce6ff, #b3e6ff); /* Standard syntax (must be last) */
-    height: 90%;
+    height: 38vh;
     border-radius: 25px;
 }
 .cardHeight img{

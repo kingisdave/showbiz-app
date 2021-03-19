@@ -23,12 +23,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $prodcats = ProductCategory::orderBy('product_category', 'asc')->get();
+        $user_id = Auth::user()->id;
+        $prodcats = ProductCategory::where('user_id', $user_id)
+                                ->orderBy('product_category', 'asc')->get();
 
-        $userId = Auth::user()->id;
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::where('user_id', $user_id)
+                        ->orderBy('created_at', 'desc')->get();
         $stockImages = array();
-        // return $products;
         if($products){
             $myproducts = $products->all();
             foreach($myproducts as $products){
@@ -69,20 +70,27 @@ class ProductsController extends Controller
         $stockId = $request->stock_id;
         $stock = Stock::find($stockId);
         // $userId = auth()->user()->id;
-        $product= Product::create([
-            'user_id' => $stock->user_id,
-            'stock_id' => $request->stock_id,
-            'product_name' => $stock->stock_name,
-            'product_brand' => $stock->stock_brand,
-            'product_quantity' => $stock->stock_quantity,
-            'product_description' => $request->product_description,
-            'product_price' => $stock->selling_price,
-            'product_category_id' => $stock->product_category_id,
-        ]);
-        if($product){
-            return back()->with('successMessage', 'Your Product has been updated');
+        if($stock){
+            Product::create([
+                'user_id' => $stock->user_id,
+                'stock_id' => $request->stock_id,
+                'product_name' => $stock->stock_name,
+                'product_brand' => $stock->stock_brand,
+                'product_quantity' => $stock->stock_quantity,
+                'product_description' => $request->product_description,
+                'product_price' => $stock->selling_price,
+                'product_category_id' => $stock->product_category_id,
+                'order_status_id' => 0,
+            ]);
+            $stock->switch_product = 1;
+            $stock->save();
+            // if($product){
+                return back()->with('successMessage', 'Your Product has been updated');
+            // } else {
+                // return back()->with('errorMessage', `<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg, jpeg, doc</div>`);
+            // }
         } else {
-            return back()->with('errorMessage', `<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg, jpeg, doc</div>`);
+            return back()->with('errorMessage', 'Not yet updated');
         }
     }
 
@@ -128,6 +136,18 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $singleProduct = Product::find($id);
+        if($singleProduct){
+            $upProduct = Stock::where('id', $singleProduct->stock_id)->first();
+            $upProduct->switch_product = 0;
+            $downProduct = $upProduct->save();
+            
+            if($downProduct){
+                $singleProduct->delete();
+            }
+            return redirect()->back()->with('successMessage', "Product has been removed");
+        } else {
+            return redirect()->back()->with('errorMessage', "Error removing the product");
+        }
     }
 }

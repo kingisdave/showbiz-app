@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Order;
+use App\Models\Stock;
 
 class OrdersController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth')->except('index');
+        // $this->middleware('auth')->only('index');
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('pages.privates.order');
+        $myCart = Order::all();
+        return view('pages.privates.order')->with('myCart', $myCart);
     }
 
     /**
@@ -34,7 +44,7 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Order::all();
     }
 
     /**

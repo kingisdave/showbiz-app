@@ -46,9 +46,9 @@
                             <div class="tab-pane fade show active" id="allProducts" role="tabpanel" aria-labelledby="allProducts-tab">
                                 <div class="row">
                                     @if(count($products) > 0)
-                                        @foreach($products as $product)                                        
+                                        @foreach($products as $product)                                   
                                             <div class="col-md-3 col-sm-4 col-12 newPcard">
-                                                {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne"> --}}
+                                                {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$product->id}}" data-bs-whatever="@productOne"> --}}
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal{{$product->id}}" data-bs-whatever="@productOne">
                                                     <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
                                                         <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" class="mx-auto" 
@@ -58,7 +58,7 @@
                                                                 <h6 class="fw-bold text-center">{{$product->product_name}}</h6>
                                                                 <p class="clearfix">
                                                                     <span class="small float-start">$ {{$product->product_price}}</span>
-                                                                    @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 )           
+                                                                    @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 )
                                                                         <span class="small float-end bg-danger p-1">New</span>
                                                                     @endif
                                                                 </p>
@@ -71,7 +71,7 @@
                                         @endforeach
                                     @else
                                         <div class="text-center">
-                                            <span class="alert alert-danger text-center">You have no stock yet!</span>
+                                            <span class="alert alert-danger text-center">You have no product yet!</span>
                                         </div>
                                     @endif
 
@@ -285,18 +285,18 @@
                                                                     <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" 
                                                                         class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[0]->stockImages, 7)}}" />
                                                                 </div>
-                                                                <div class="carousel-item">
-                                                                    @if ($product->file[1])
+                                                                @if (count($product->file) > 1)
+                                                                    <div class="carousel-item">
                                                                         <img src="/storage/{{substr($product->file[1]->stockImages, 7)}}" 
-                                                                            class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[1]->stockImages, 7)}}" />
-                                                                    @endif
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    @if ($product->file[2])
+                                                                                class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[1]->stockImages, 7)}}" />
+                                                                    </div>
+                                                                @endif
+                                                                @if (count($product->file) > 2)
+                                                                    <div class="carousel-item">
                                                                         <img src="/storage/{{substr($product->file[2]->stockImages, 7)}}" 
                                                                             class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[2]->stockImages, 7)}}" />
-                                                                    @endif
-                                                                </div>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="col-12 row my-2">
@@ -306,18 +306,18 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-4">
-                                                                <div class="mx-auto smallInsideModal rounded">
-                                                                    @if ($product->file[1])
+                                                                @if (count($product->file) > 1)
+                                                                    <div class="mx-auto smallInsideModal rounded">
                                                                         <img src="/storage/{{substr($product->file[1]->stockImages, 7)}}" class="img-thumbnail border-0 rounded shadow" alt="{{substr($product->file[1]->stockImages, 7)}}" />
-                                                                    @endif
-                                                                </div>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                             <div class="col-4">
-                                                                <div class="mx-auto smallInsideModal rounded">
-                                                                    @if ($product->file[2])
+                                                                @if (count($product->file) > 2)
+                                                                    <div class="mx-auto smallInsideModal rounded">
                                                                         <img src="/storage/{{substr($product->file[2]->stockImages, 7)}}" class="img-thumbnail border-0 rounded shadow" alt="{{substr($product->file[2]->stockImages, 7)}}" />
-                                                                    @endif
-                                                                 </div>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="col-12 mt-2">
@@ -343,11 +343,11 @@
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <div class="col-12 clearfix">
-                                                <button class="float-start btn btn-primary text-white"><i class="fa fa-arrow-left me-2"></i>Remove from Products</button>
+                                                {{-- <button class="float-start btn btn-primary text-white"><i class="fa fa-arrow-left me-2"></i>Remove from Products</button> --}}
                                                 {{-- <button class="float-end btn btn-outline-danger"><i class="fa fa-trash me-2"></i>Delete</button> --}}
-                                                <button class="float-start btn btn-primary text-white" onclick="var bb = <?php echo 'deleteStock'.$stock->id ?>; if(confirm('Do you wish to remove this product? If not, press Cancel')){ bb.submit() }">
+                                                <button class="float-end btn btn-primary text-white" onclick="var bb = <?php echo 'removeProduct'.$product->id ?>; if(confirm('Do you wish to remove this product? If not, press Cancel')){ bb.submit() }">
                                                     <i class="fa fa-arrow-left me-2"></i>Remove from Products</button>
-                                                <form method="POST" id="{{'deleteStock'.$stock->id}}" action="{{route('stock.destroy', $stock->id)}}">
+                                                <form method="POST" id="{{'removeProduct'.$product->id}}" action="{{route('product.destroy', $product->id)}}">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>

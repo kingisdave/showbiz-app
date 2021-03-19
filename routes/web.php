@@ -2,19 +2,19 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\BlogsController;
-// use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogCategoriesController;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CommentsController;
-use App\Http\Controllers\ShopsController;
-use App\Http\Controllers\GoogleLoginController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardBlogsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\StocksController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ShopsController;
+use App\Http\Controllers\StocksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +38,9 @@ Route::get('/contact', [PagesController::class, 'contact']);
 // Route::get('/ecommerce', function () {
     //     return view('pages.ecommerce');
     // });
-Route::get('/cart', function () {
-    return view('pages.cart');
-});
+// Route::get('/cart', function () {
+//     return view('pages.cart');
+// });
 // Route::get('/blog', function () {
     //     return view('pages.blogpage');
     // });
@@ -48,6 +48,7 @@ Route::get('/cart', function () {
 Route::resource('blog', BlogsController::class);
 Route::resource('blog.comments', CommentsController::class)->shallow();
 Route::get('/shop', [PagesController::class, 'shops']);
+Route::resource('cart', CartsController::class)->only(['index', 'store', 'destroy']);
 
 Route::get('/auth/redirect/{provider}', [GoogleLoginController::class, 'redirect']);
 Route::get('/callback/{provider}', [GoogleLoginController::class, 'callback']);

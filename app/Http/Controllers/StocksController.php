@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Stock;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\StockImage;
 use App\Models\ProductCategory;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
 class StocksController extends Controller
@@ -23,10 +23,15 @@ class StocksController extends Controller
      */
     public function index()
     {
-        $prodcats = ProductCategory::orderBy('product_category', 'asc')->get();
+        $user_id = auth()->user()->id;
+        $prodcats = ProductCategory::where('user_id', $user_id)
+                                ->orderBy('product_category', 'asc')->get();
 
-        $userId = Auth::user()->id;
-        $stocks = Stock::orderBy('created_at', 'desc')->get();
+        // $userId = Auth::user()->id;
+    	// $user = User::find($user_id);
+        // auth()->user()->Stock;
+        $stocks = Stock::where('user_id', $user_id)
+                    ->orderBy('created_at', 'desc')->get();
         $stockImages = array();
         if($stocks){
             $mystocks = $stocks->all();
@@ -222,6 +227,7 @@ class StocksController extends Controller
         $pickStock = Stock::find($id);
         if($pickStock){
             // Storage::delete($eachFile->stockImages);
+            Product::where('stock_id', $pickStock->id)->delete();
             StockImage::where('stock_id', $pickStock->id)->delete();
         }
         $downStock = $pickStock->delete();

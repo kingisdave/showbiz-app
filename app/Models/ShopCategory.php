@@ -11,10 +11,10 @@ class ShopCategory extends Model
 
     
     function user(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsTo('App\Models\User');
     }
     function shop(){
-        return $this->hasMany('App\Models\Shop');
+        return $this->belongsTo('App\Models\Shop');
     }
 
 }

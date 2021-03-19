@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('product_brand');
             $table->decimal('product_price', 30, 2);
             $table->integer('product_quantity');
+            $table->integer('order_status_id')->default(0);
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class Shop extends Model
     }
 
     public function shopCategory(){
-    	return $this->belongsTo('App\Models\ShopCategory');
+    	return $this->hasMany('App\Models\ShopCategory');
     }
 
     function stock(){

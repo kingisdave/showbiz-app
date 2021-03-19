@@ -12,7 +12,13 @@
                         <div class="col-md-3 col-sm-6 col-12">
                             <a href="/dashboard/store/order" class="text-reset">
                                 <div class="card m-1 shadow ps-3 d-flex justify-content-center shopTopCard">
-                                    <h4 class="fw-bolder lh-1">0</h4>
+                                    @if($orders)
+                                        @if(count($orders)> 0)
+                                            <h4 class="fw-bolder lh-1">{{count($orders)}}</h4>
+                                        @else
+                                            <h4 class="fw-bolder lh-1">0</h4>
+                                        @endif
+                                    @endif
                                     <p class="small lh-1">Order</p> 
                                 </div>
                             </a>
@@ -20,7 +26,13 @@
                         <div class="col-md-3 col-sm-6 col-12">
                             <a href="/dashboard/store/product" class="text-reset">
                                 <div class="card m-1 shadow ps-3 d-flex justify-content-center shopTopCard">
-                                    <h4 class="fw-bolder lh-1">0</h4>
+                                    @if($products)
+                                        @if(count($products)> 0)
+                                            <h4 class="fw-bolder lh-1">{{count($products)}}</h4>
+                                        @else
+                                            <h4 class="fw-bolder lh-1">0</h4>
+                                        @endif
+                                    @endif
                                     <p class="small lh-1">Product</p>
                                 </div>
                             </a>
@@ -28,7 +40,13 @@
                         <div class="col-md-3 col-sm-6 col-12">
                             <a href="/dashboard/store/stock" class="text-reset">
                                 <div class="card m-1 shadow ps-3 d-flex justify-content-center shopTopCard">
-                                    <h4 class="fw-bolder lh-1">0</h4>
+                                    @if($stocks)
+                                        @if(count($stocks) > 0)
+                                            <h4 class="fw-bolder lh-1">{{count($stocks)}}</h4>
+                                        @else
+                                            <h4 class="fw-bolder lh-1">0</h4>
+                                        @endif
+                                    @endif
                                     <p class="small lh-1">Stock</p>
                                 </div>
                             </a>

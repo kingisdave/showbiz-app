@@ -18,13 +18,20 @@ class Product extends Model
         'product_category_id',
         'product_description',
         'product_price',
+        'order_status_id',
     ];
 
     public function user(){
     	return $this->belongsTo('App\Models\User');
     }
+    public function shop(){
+    	return $this->belongsTo('App\Models\Shop');
+    }
     public function productCategory(){
     	return $this->belongsTo('App\Models\ProductCategory');
+    }
+    function orderStatus(){
+        return $this->belongsTo('App\Models\OrderStatus');
     }
     public function stock(){
         return $this->hasOne('App\Models\Stock');
