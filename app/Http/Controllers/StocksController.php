@@ -26,26 +26,31 @@ class StocksController extends Controller
         $user_id = auth()->user()->id;
         $prodcats = ProductCategory::where('user_id', $user_id)
                                 ->orderBy('product_category', 'asc')->get();
-
-        // $userId = Auth::user()->id;
-    	// $user = User::find($user_id);
-        // auth()->user()->Stock;
+                                
         $stocks = Stock::where('user_id', $user_id)
                     ->orderBy('created_at', 'desc')->get();
+         
         $stockImages = array();
         if($stocks){
             $mystocks = $stocks->all();
             foreach($mystocks as $stocks){
                 $stockid = $stocks->id;
+                $products= Product::where('stock_id', $stockid)->get('product_quantity');
+                // foreach($products as $product){
+                    $stocks['proRem'] = $products->sum('product_quantity');
+                // }
                 $stock_file = Stock::find($stockid)->stockImage;
                 $stocks['file'] = $stock_file;
                 array_push($stockImages, $stocks);
+                
             };
+        
         }
 
             return view('pages.privates.stock')
                     ->with('stocks', $stockImages)
                     ->with('prodcats', $prodcats);
+                    // ->with('remProducts', $remainProd);
     }
 
     /**

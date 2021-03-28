@@ -6,7 +6,7 @@
             @if($myCart)
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{count($myCart)}} <span class="visually-hidden">unread messages</span></span>
             @else
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"> <span class="visually-hidden">unread messages</span></span>
+                <span class="position-absolute top-0 start-100 translate-middle badge"></span>
             @endif    
         </a>
         <a href="#" class="btn btn-outline-dark rounded-circle fa fa-envelope position-relative">

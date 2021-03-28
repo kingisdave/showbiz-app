@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddOrderTokenToOrders extends Migration
+class AddUserAddressIdToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddOrderTokenToOrders extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->string('order_token');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('user_address_id')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddOrderTokenToOrders extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('order_token');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_address_id');
         });
     }
 }

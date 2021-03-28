@@ -11,7 +11,8 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
-        'stock_id', 
+        'stock_id',
+        'user_address',
         'product_name',
         'product_brand',
         'order_quantity',
@@ -19,7 +20,7 @@ class Order extends Model
         'product_category_id',
         'product_price',
         'order_status_id',
-        'order_token',
+        'buyer_id',
     ];
 
     public function user(){

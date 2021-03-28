@@ -65,18 +65,24 @@ class ProductsController extends Controller
     {
         $this->validate($request, [
             'stock_id' => 'required',
+            'product_name' => 'required',
+            'product_quantity' => 'required',
             'product_description' => 'required|max:600',
         ]);
         $stockId = $request->stock_id;
         $stock = Stock::find($stockId);
         // $userId = auth()->user()->id;
-        if($stock){
+        $products= Product::where('stock_id', $stockId)->get('product_quantity');
+        $stocksRem = $products->sum('product_quantity');
+        $myStock = $stock->stock_quantity - ($stocksRem + $request->product_quantity);
+        
+        if($myStock >= 0){
             Product::create([
                 'user_id' => $stock->user_id,
                 'stock_id' => $request->stock_id,
-                'product_name' => $stock->stock_name,
+                'product_name' => $request->product_name,
                 'product_brand' => $stock->stock_brand,
-                'product_quantity' => $stock->stock_quantity,
+                'product_quantity' => $request->product_quantity,
                 'product_description' => $request->product_description,
                 'product_price' => $stock->selling_price,
                 'product_category_id' => $stock->product_category_id,
@@ -136,9 +142,16 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+        // $products= Product::where('stock_id', $stockId)->get('product_quantity');
+        // $stocksRem = $products->sum('product_quantity');
+        // $myStock = $stock->stock_quantity - ($stocksRem + $request->product_quantity);
+
         $singleProduct = Product::find($id);
+        $addQuantity = $singleProduct->product_quantity;
         if($singleProduct){
+
             $upProduct = Stock::where('id', $singleProduct->stock_id)->first();
+            // $upProduct->stock_quantity += $addQuantity;
             $upProduct->switch_product = 0;
             $downProduct = $upProduct->save();
             

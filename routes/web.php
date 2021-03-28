@@ -48,7 +48,7 @@ Route::get('/contact', [PagesController::class, 'contact']);
 Route::resource('blog', BlogsController::class);
 Route::resource('blog.comments', CommentsController::class)->shallow();
 Route::get('/shop', [PagesController::class, 'shops']);
-Route::resource('cart', CartsController::class)->only(['index', 'store', 'destroy']);
+Route::resource('cart', CartsController::class)->only(['index', 'store', 'update', 'destroy']);
 
 Route::get('/auth/redirect/{provider}', [GoogleLoginController::class, 'redirect']);
 Route::get('/callback/{provider}', [GoogleLoginController::class, 'callback']);

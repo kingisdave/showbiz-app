@@ -26,6 +26,7 @@ class ShopsController extends Controller
                                 ->orderBy('product_category', 'asc')->get();
         $stocks = auth()->user()->Stock;
         $orders = Order::all();
+        $orders = auth()->user()->Order;
         // return $orders;
         $products = auth()->user()->Product;
         return view('pages.privates.shopper')

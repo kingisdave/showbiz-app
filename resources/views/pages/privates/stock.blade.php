@@ -67,9 +67,11 @@
                                                         <th></th>
                                                         <th>Image</th>
                                                         <th>Name</th>
+                                                        <th>Total Qty</th>
+                                                        <th>Rem. Qty</th>
                                                         <th>Cost Price</th>
                                                         <th>Selling Price</th>
-                                                        <th>Product</th>
+                                                        <th>Product %</th>
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
@@ -90,14 +92,24 @@
                                                                     <h6 class="fw-bold">{{$stock->stock_name}}</h6></a>
                                                                 </td>
                                                                 <td>
+                                                                    <span class="small">{{$stock->stock_quantity}}</span>
+                                                                </td>
+                                                                <td>
+                                                                    @if($stock->proRem)
+                                                                        <span class="small">{{$stock->stock_quantity - $stock->proRem}}</span>
+                                                                    @else
+                                                                        <span class="small">{{$stock->stock_quantity}}</span>
+                                                                    @endif
+                                                                </td>
+                                                                <td>
                                                                     <span class="small">$ {{$stock->cost_price}}</span>
                                                                 </td>
                                                                 <td>
                                                                     <span class="small">$ {{$stock->selling_price}}</span> 
                                                                 </td>
-                                                                @if($stock->switch_product === 0)
+                                                                @if(($stock->stock_quantity - $stock->proRem) > 0)
                                                                     <td class="text-danger">
-                                                                        Not yet
+                                                                        {{round(($stock->proRem / $stock->stock_quantity) * 100, 2) }} %
                                                                     </td>
                                                                     <td>
                                                                         <button class="btn btn-success text-white shadow" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
@@ -105,8 +117,9 @@
                                                                         </button>
                                                                     </td>
                                                                 @else
-                                                                    <td>
-                                                                        <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i>
+                                                                    <td class="text-success">
+                                                                        {{round(($stock->proRem / $stock->stock_quantity) * 100, 2) }} %
+                                                                        {{-- <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i> --}}
                                                                     </td>
                                                                     <td>
                                                                         <span class="bg-secondary text-light p-1">Products</span>
@@ -156,9 +169,11 @@
                                                         <th></th>
                                                         <th>Image</th>
                                                         <th>Name</th>
+                                                        <th>Total Qty</th>
+                                                        <th>Rem. Qty</th>
                                                         <th>Cost Price</th>
                                                         <th>Selling Price</th>
-                                                        <th>Product</th>
+                                                        <th>Product %</th>
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
@@ -176,14 +191,24 @@
                                                                         <h6 class="fw-bold">{{$stock->stock_name}}</h6></a>
                                                                     </td>
                                                                     <td>
+                                                                        <span class="small">{{$stock->stock_quantity}}</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        @if($stock->proRem)
+                                                                            <span class="small">{{$stock->stock_quantity - $stock->proRem}}</span>
+                                                                        @else
+                                                                            <span class="small">{{$stock->stock_quantity}}</span>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
                                                                         <span class="small">$ {{$stock->cost_price}}</span>
                                                                     </td>
                                                                     <td>
                                                                         <span class="small">$ {{$stock->selling_price}}</span> 
                                                                     </td>
-                                                                    @if($stock->switch_product === 0)
+                                                                    @if(($stock->stock_quantity - $stock->proRem) > 0)
                                                                         <td class="text-danger">
-                                                                            Not yet
+                                                                            {{round(($stock->proRem / $stock->stock_quantity) * 100, 2) }} %
                                                                         </td>
                                                                         <td>
                                                                             <button class="btn btn-success text-white shadow" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
@@ -191,8 +216,9 @@
                                                                             </button>
                                                                         </td>
                                                                     @else
-                                                                        <td>
-                                                                            <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i>
+                                                                        <td class="text-success">
+                                                                            {{round(($stock->proRem / $stock->stock_quantity) * 100, 2) }} %
+                                                                            {{-- <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i> --}}
                                                                         </td>
                                                                         <td>
                                                                             <span class="bg-secondary text-light p-1">Products</span>
@@ -243,9 +269,11 @@
                                                         <th></th>
                                                         <th>Image</th>
                                                         <th>Name</th>
+                                                        <th>Total Qty</th>
+                                                        <th>Rem. Qty</th>
                                                         <th>Cost Price</th>
                                                         <th>Selling Price</th>
-                                                        <th>Product</th>
+                                                        <th>Product %</th>
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
@@ -263,19 +291,39 @@
                                                                         <h6 class="fw-bold">{{$stock->stock_name}}</h6></a>
                                                                     </td>
                                                                     <td>
+                                                                        <span class="small">{{$stock->stock_quantity}}</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        @if($stock->proRem)
+                                                                            <span class="small">{{$stock->stock_quantity - $stock->proRem}}</span>
+                                                                        @else
+                                                                            <span class="small">{{$stock->stock_quantity}}</span>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
                                                                         <span class="small">$ {{$stock->cost_price}}</span>
                                                                     </td>
                                                                     <td>
                                                                         <span class="small">$ {{$stock->selling_price}}</span> 
                                                                     </td>
-                                                                    <td>
-                                                                        <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i>
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
-                                                                            <i class="fa fa-arrow-right me-2"></i>Add to Products 
-                                                                        </button>
-                                                                    </td>
+                                                                    @if(($stock->stock_quantity - $stock->proRem) > 0)
+                                                                        <td class="text-danger">
+                                                                            {{round(($stock->proRem / $stock->stock_quantity) * 100, 2) }} %
+                                                                        </td>
+                                                                        <td>
+                                                                            <button class="btn btn-success text-white shadow" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
+                                                                                <i class="fa fa-arrow-right me-2"></i>Add to Products 
+                                                                            </button>
+                                                                        </td>
+                                                                    @else
+                                                                        <td class="text-success">
+                                                                            {{round(($stock->proRem / $stock->stock_quantity) * 100, 2) }} %
+                                                                            {{-- <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i> --}}
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="bg-secondary text-light p-1">Products</span>
+                                                                        </td>
+                                                                    @endif
                                                                 </tr>
                                                             @endif
                                                         @endforeach
@@ -321,9 +369,11 @@
                                                         <th></th>
                                                         <th>Image</th>
                                                         <th>Name</th>
+                                                        <th>Total Qty</th>
+                                                        <th>Rem. Qty</th>
                                                         <th>Cost Price</th>
                                                         <th>Selling Price</th>
-                                                        <th>Product</th>
+                                                        <th>Product %</th>
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
@@ -339,6 +389,16 @@
                                                                     </td>
                                                                     <td><a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
                                                                         <h6 class="fw-bold">{{$stock->stock_name}}</h6></a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="small">{{$stock->stock_quantity}}</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        @if($stock->proRem)
+                                                                            <span class="small">{{$stock->stock_quantity - $stock->proRem}}</span>
+                                                                        @else
+                                                                            <span class="small">{{$stock->stock_quantity}}</span>
+                                                                        @endif
                                                                     </td>
                                                                     <td>
                                                                         <span class="small">$ {{$stock->cost_price}}</span>
@@ -751,9 +811,33 @@
                                         <div class="modal-content">
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                <h5 class="fw-bold">Add Product Description</h5>
+                                                <h5 class="fw-bold">Add Product Section</h5>
                                                 <div class="container-fliud">
                                                     <input type="number" name="stock_id" id="stock_id" value="{{$stock->id}}" class="form-control" hidden />
+                                                    <div class="form-group">
+                                                        <label>Product Name</label>
+                                                        <input type="text" name="product_name" id="product_name" value="{{$stock->stock_name}}" class="form-control @error('product_name') is-invalid @enderror" required />
+                                                        @error('product_name')
+                                                            <small class="invalid-feedback" role="alert">
+                                                                {{ $message }}
+                                                            </small>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Product Quantity</label>
+                                                            <select name="product_quantity" id="product_quantity" class="form-control @error('product_quantity') is-invalid @enderror" required>
+                                                                <option value="">--Select Quantity--</option>
+                                                                @for($i= 1; $i <= ($stock->stock_quantity - $stock->proRem); $i++)
+                                                                    <option value="{{$i}}">{{$i}}</option>
+                                                                @endfor
+                                                                @error('product_quantity')
+                                                                    <small class="invalid-feedback" role="alert">
+                                                                        {{ $message }}
+                                                                    </small>
+                                                                @enderror
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group my-3">
                                                         <label for="productDescription" class="my-2">Product Description</label>
                                                         <textarea name="product_description" rows="6" id="product_descrition" class="form-control @error('product_description') is-invalid @enderror"

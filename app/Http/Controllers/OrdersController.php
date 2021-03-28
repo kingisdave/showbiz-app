@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Stock;
+use App\Models\UserAddress;
 
 class OrdersController extends Controller
 {
@@ -22,8 +24,25 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $myCart = Order::all();
-        return view('pages.privates.order')->with('myCart', $myCart);
+        // $userId = auth()->user()->pluck('id')->first();
+        $myOrders = array();
+        $orders = auth()->user()->Order;
+        // return $orders;
+        if(count($orders) > 0){
+            foreach($orders as $order){
+                $order['userAddress'] = "";
+               $user_fullname =  User::where('id', $order->buyer_id)->pluck('full_name')->first();
+            //    return $order->buyer_id;
+                $order['buyer_name'] = $user_fullname;
+                $buyerAdd = UserAddress::where('id', $order->user_address_id)->first();
+                if($buyerAdd){
+                    $order['userAddress'] = $buyerAdd->street_address.", ".$buyerAdd->city_address.", ".$buyerAdd->state_address.", ".$buyerAdd->country_address; 
+                }
+            //    return UserAddress::where('id', $order->user_address_id)->where('user_id', $order->buyer_id)->get(); 
+                array_push($myOrders, $order);
+            }
+        }
+        return view('pages.privates.order')->with('myOrders', $myOrders);
     }
 
     /**
@@ -44,7 +63,16 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        return Order::all();
+        $pendingOrder = Order::find($request->order_id);
+        $pendingOrder->order_status_id = 2;
+        $updatedOrder = $pendingOrder->save();
+        
+        if($updatedOrder){
+            return back()->with('successMessage', 'You have dispatched this order!');
+        } else {
+            return back()->with('errorMessage', 'Warning, You can not dispatch this order!');
+        }
+             
     }
 
     /**
@@ -59,7 +87,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update the specified resource in storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -78,7 +106,15 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dispatchedOrder = Order::find($id);
+        $dispatchedOrder->order_status_id = 3;
+        $upOrder = $dispatchedOrder->save();
+        
+        if($upOrder){
+            return back()->with('successMessage', 'This order has been successfully delivered!');
+        } else {
+            return back()->with('errorMessage', 'Warning, This order cant be delivered!');
+        }
     }
 
     /**
@@ -89,6 +125,13 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $completedOrder = Order::find($id);
+        $downOrder = $completedOrder->delete();
+        
+        if($downOrder){
+            return back()->with('successMessage', 'Order successfully removed!');
+        } else {
+            return back()->with('errorMessage', 'Warning, Order removal not possible!');
+        }
     }
 }
