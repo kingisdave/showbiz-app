@@ -48,8 +48,8 @@ nav{
 }
 .myCardStyle{
     /* width: 13rem; */
-    height: 85% ; 
-    max-height: 100%;
+    height:90% ; 
+    max-height: 90%;
     box-shadow: 0 0 10px #cccccc !important;
 }
 .myCardStyle:hover, .myCardStyle:focus{
@@ -84,6 +84,15 @@ nav{
 .myblogs a:hover{
     text-decoration: underline;
 }
+.divTopImage{
+    height: 80vh;
+}
+.topBigImage{
+    height: 100%;
+    width: 100%;
+    object-fit: 100%;
+}
+
 p.sideMaxSize{ 
     max-height : 17vh; 
     text-align: justify;

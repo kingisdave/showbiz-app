@@ -45,7 +45,7 @@ Route::get('/contact', [PagesController::class, 'contact']);
     //     return view('pages.blogpage');
     // });
     
-Route::resource('blog', BlogsController::class);
+Route::resource('blogs', BlogsController::class);
 Route::resource('blog.comments', CommentsController::class)->shallow();
 Route::get('/shop', [PagesController::class, 'shops']);
 Route::resource('cart', CartsController::class)->only(['index', 'store', 'update', 'destroy']);

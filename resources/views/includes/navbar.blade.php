@@ -83,7 +83,7 @@
                             <a class="nav-link" href="/shop">Shop now</a>
                         </li>
                         <li class="nav-item mx-1">
-                            <a class="nav-link" href="/blog">Forums</a>
+                            <a class="nav-link" href="/blogs">Forums</a>
                         </li>
                         {{-- @guest
 

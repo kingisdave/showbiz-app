@@ -118,7 +118,7 @@
                                                         </td>
                                                     </tr>    
                                                 @endforeach
-                                                <tr class="my-1 shadow">
+                                                {{-- <tr class="my-1 shadow">
                                                     <td>Dave David</td>
                                                     <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
                                                     <td>Fancy Snickers</td>
@@ -145,192 +145,161 @@
                                                         <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed"></button>
                                                         <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
                                                     </td>
-                                                </tr>
-                                                <tr class="my-1 shadow">
-                                                    <td>Dave David</td>
-                                                    <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                    <td>Fancy Snickers</td>
-                                                    <td>5</td>
-                                                    <td>#330.33</td>
-                                                    <td>23rd Feb, 2021</td>
-                                                    <td>
-                                                        <small class="text-primary">Completed<small>
-                                                        <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
-                                                        <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden title="Completed"></button>
-                                                        <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                    </td>
-                                                </tr>
+                                                </tr> --}}
                                             </tbody>
                                         </table>
                                     </div>
                                 @endif
                             </div>
                             <div class="tab-pane fade" id="dispatch" role="tabpanel" aria-labelledby="dispatch-tab">
-                                <div class="table-responsive ">
-                                    <table class="table table-striped table-hover small">
-                                        <thead class="table-secondary">
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Item</th>
-                                            <th>Qty</th>
-                                            <th>Price</th>
-                                            <th>Date</th>
-                                            <th>Status/Action</th>
-                                        </thead>
-                                        <tbody class="">
-                                            <tr class="my-1 shadow">
-                                                <td>Dave David</td>
-                                                <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>Fancy Snickers</td>
-                                                <td>5</td>
-                                                <td>#330.33</td>
-                                                <td>23rd Feb, 2021</td>
-                                                <td>
-                                                    <small class="text-success">Dispatch<small>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed"></button>
-                                                    <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                </td>
-                                            </tr>
-                                            <tr class="my-1 shadow">
-                                                <td>Dave David</td>
-                                                <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>Fancy Snickers</td>
-                                                <td>5</td>
-                                                <td>#330.33</td>
-                                                <td>23rd Feb, 2021</td>
-                                                <td>
-                                                    <small class="text-success">Dispatch<small>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed"></button>
-                                                    <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                @if(count($myOrders) > 0)
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover small">
+                                            <thead class="table-secondary">
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Date</th>
+                                                <th>Status/Action</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($myOrders as $order)
+                                                    @if($order->order_status_id === 2)
+                                                        <tr class="my-1 shadow">
+                                                            <td>{{$order->buyer_name}}</td>
+                                                            <td>{{$order->userAddress}}</td>
+                                                            <td>{{$order->product_name}}</td>
+                                                            <td>{{$order->order_quantity}}</td>
+                                                            <td>{{$order->product_price}}</td>
+                                                            <td>{{$order->created_at}}</td>
+                                                            <td>
+                                                                <small class="text-success">Dispatch<small>
+                                                                <button class="btn btn-sm btn-outline-primary shadow fa fa-check" title="Completed" onclick="var ddd = <?php echo 'updatetwo'.$order->id ?>; ddd.submit()"></button>
+                                                                <form method="POST" id="{{'updatetwo'.$order->id}}" action="{{route('order.update', $order->id)}}" hidden>
+                                                                    @csrf
+                                                                    @method('PUT')    
+                                                                </form>
+
+                                                                <button class="btn btn-sm btn-outline-danger shadow fa fa-trash" onclick="var fff = <?php echo 'deleteStock'.$order->id ?>; fff.submit()"></button>
+                                                                
+                                                                <form method="POST" id="{{'deleteStock'.$order->id}}" action="{{route('order.destroy', $order->id)}}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                </form>
+                                                            </td>
+                                                        </tr> 
+                                                    @else
+                                                        <div class="alert alert-danger">
+                                                            <span class="text-center">There are no dispatched orders</span>
+                                                        </div>   
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
                             <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-hover small">
-                                        <thead class="table-secondary">
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Item</th>
-                                            <th>Qty</th>
-                                            <th>Price</th>
-                                            <th>Date</th>
-                                            <th>Status/Action</th>
-                                        </thead>
-                                        <tbody class="">
-                                            <tr class="my-1 shadow">
-                                                <td>Dave David</td>
-                                                <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>Fancy Snickers</td>
-                                                <td>5</td>
-                                                <td>#330.33</td>
-                                                <td>23rd Feb, 2021</td>
-                                                <td>
-                                                    <small class="text-danger">Pending<small>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch"></button>
-                                                    <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                </td>
-                                            </tr>
-                                            <tr class="my-1 shadow">
-                                                <td>Dave David</td>
-                                                <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>Fancy Snickers</td>
-                                                <td>5</td>
-                                                <td>#330.33</td>
-                                                <td>23rd Feb, 2021</td>
-                                                <td>
-                                                    <small class="text-danger">Pending<small>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch"></button>
-                                                    <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                @if(count($myOrders) > 0)
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover small">
+                                            <thead class="table-secondary">
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Date</th>
+                                                <th>Status/Action</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($myOrders as $order)
+                                                    @if($order->order_status_id === 1)
+                                                        <tr class="my-1 shadow">
+                                                            <td>{{$order->buyer_name}}</td>
+                                                            <td>{{$order->userAddress}}</td>
+                                                            <td>{{$order->product_name}}</td>
+                                                            <td>{{$order->order_quantity}}</td>
+                                                            <td>{{$order->product_price}}</td>
+                                                            <td>{{$order->created_at}}</td>
+                                                            <td>
+                                                                <small class="text-danger">Pending<small>
+                                                                <button class="btn btn-sm btn-outline-success shadow fa fa-truck" title="Dispatch" onclick="var ggg = <?php echo 'updateone'.$order->id ?>; ggg.submit()"></button>
+                                                                <form method="POST" id="{{'updateone'.$order->id}}" action="{{route('order.store')}}" hidden>
+                                                                    @csrf
+                                                                    <input type="text" name="order_id" id="order_id" value="{{$order->id}}" hidden />
+                                                                </form>
+                                                                <button class="btn btn-sm btn-outline-danger shadow fa fa-trash" onclick="var fff = <?php echo 'deleteStock'.$order->id ?>; fff.submit()"></button>
+                                                                
+                                                                <form method="POST" id="{{'deleteStock'.$order->id}}" action="{{route('order.destroy', $order->id)}}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @else
+                                                        <div class="alert alert-danger">
+                                                            <span class="text-center">There are no pending orders</span>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
                             <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-                                <div class="table-responsive ">
-                                    <table class="table table-striped table-hover  small">
-                                        <thead class="table-secondary">
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Date</th>
-                                            <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </thead>
-                                        <tbody class="">
-                                            <tr class="my-1 shadow">
-                                                <td>Dave David</td>
-                                                <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>Fancy Snickers</td>
-                                                <td>5</td>
-                                                <td>#330.33</td>
-                                                <td>23rd Feb, 2021</td>
-                                                <td>
-                                                    <small class="text-primary">Completed<small>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
-                                                    <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                </td>
-                                            </tr>
-                                            <tr class="my-1 shadow">
-                                                <td>Dave David</td>
-                                                <td>No 1, SQI ICT Academy, Along Yoaco, Lautech</td>
-                                                <td>Fancy Snickers</td>
-                                                <td>5</td>
-                                                <td>#330.33</td>
-                                                <td>23rd Feb, 2021</td>
-                                                <td>
-                                                    <small class="text-primary">Completed<small>
-                                                    <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
-                                                    <button class="btn btn-sm btn-outline-primary shadow fa fa-check" hidden></button>
-                                                    <button class="btn btn-sm btn-outline-danger shadow fa fa-trash"></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                @if(count($myOrders) > 0)
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover small">
+                                            <thead class="table-secondary">
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Item</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Date</th>
+                                                <th>Status/Action</th>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($myOrders as $order)
+                                                    @if($order->order_status_id === 3)
+                                                        <tr class="my-1 shadow">
+                                                            <td>{{$order->buyer_name}}</td>
+                                                            <td>{{$order->userAddress}}</td>
+                                                            <td>{{$order->product_name}}</td>
+                                                            <td>{{$order->order_quantity}}</td>
+                                                            <td>{{$order->product_price}}</td>
+                                                            <td>{{$order->created_at}}</td>
+                                                            <td>    
+                                                                <small class="text-primary">Completed<small>
+                                                                <button class="btn btn-sm btn-outline-secondary shadow fa fa-circle disabled"></button>
+                                                                
+                                                                <button class="btn btn-sm btn-outline-danger shadow fa fa-trash" onclick="var fff = <?php echo 'deleteStock'.$order->id ?>; fff.submit()"></button>
+                                                                
+                                                                <form method="POST" id="{{'deleteStock'.$order->id}}" action="{{route('order.destroy', $order->id)}}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @else
+                                                        <div class="alert alert-danger">
+                                                            <span class="text-center">There are no completed orders</span>
+                                                        </div>
+                                                    @endif    
+                                                @endforeach
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-2">
-                        {{-- @if(count($myblogs)>0)
-                            @foreach ($myblogs as $myblog)
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    
-                                    <div class="card border-0 shadow m-1">
-                                        <div class="d-flex dashboardBlogs pt-1 pe-2 m-1">
-                                            <img src="/storage/blogs/{{$myblog->blogimage}}" alt="{{$myblog->blogimage}}" class="img-fluid ms-1 me-3" style="width:100px; height: 80px" />
-                                            <p class=""><a href="/dashboard/blog/{{$myblog->id}}" class="text-reset"><strong>{{$myblog->blog_title}}</strong></a>
-                                                <small class="ms-2"><i class="">12:59 Feb 19, 2016</i></small>
-                                            </p>
-                                            <p class="ms-auto"><span class="btn btn-sm btn-outline-danger" onclick="var a = <?php echo 'deleting'.$myblog->id ?>; a.submit() ">Delete</span></p>
-                                            <form method="POST" id="{{'deleting'.$myblog->id}}" action="{{route('blog.destroy', $myblog->id)}}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @endforeach
-                        @else
-                            <div class="alert alert-danger logalert rounded-pill" role="alert">
-                                You have no blog yet
-                            </div>
-                        @endif --}}
-                        
-                    </div>
-                    
-                   
                 </div>
                 <!-- footer details -->
                 @include('includes.footer')
@@ -344,35 +313,6 @@
                     URL.revokeObjectURL(mailHeaderImage.src) // free memory
                 }
             };
-            // $(document).ready(function() {
-            //     $('#logger').submit(function(e) {
-            //         e.preventDefault();
-            //         if (email.value=="" || password.value=="") {
-            //             $('#aler').fadeIn(1000).fadeOut(4000);
-            //             aler.hidden=false;
-            //             logerror.hidden = true;
-            //             return;
-            //         }
-            //         loader.hidden=false;
-            //         $.ajax({
-            //             type: "POST",
-            //             url: 'functions.php',
-            //             data: $(this).serialize(),
-            //             success: function(response)
-            //             {
-            //                 var jsonData = JSON.parse(response);
-            //                 // user is logged in successfully in the backend, now lets redirect
-            //                 if (jsonData.success == "1") {
-            //                     location.href = 'usernew.php';
-            //                 } else {
-            //                     logerror.hidden = false;
-            //                     aler.hidden=true;
-            //                     loader.hidden=true;
-
-            //                 }
-            //             }
-            //         })
-            //     });
-            // })
+            
         </script>
     @endsection

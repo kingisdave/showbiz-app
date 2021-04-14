@@ -176,7 +176,6 @@ div.dashboardBorder{
     width: 150px;
     height: 100px;
 }
-
 .bloggerCard a:hover, .bloggerCard a:focus{
     background: #cccccc !important;
     box-shadow: 0 0 10px #000000 !important;
