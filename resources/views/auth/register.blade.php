@@ -4,7 +4,7 @@
     @include('includes.signheader')
     <div class="registerWrapper">
         <div class="row">
-            <div class="col-md-6 leftSided signWrapper">
+            <div class="col-md-6 d-none d-md-block leftSided signWrapper">
     
             </div>
             <div class="col-md-6">

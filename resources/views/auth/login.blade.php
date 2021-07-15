@@ -25,8 +25,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-floating">
-                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password" placeholder=" ">
-                                        
+                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password" placeholder=" ">   
                                         <label for="floatingPassword">Password</label>
                                         
                                         @error('password')

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
     @section('content')
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/myckeditor.js') }}"></script>
+
         <div class="wrapper container-fluid" id="conta">
             @include('includes.sidenav')
             <div class="main_container">
@@ -173,8 +176,6 @@
                 @include('includes.footer')
             </div>
 		</div>
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/myckeditor.js') }}"></script>
         <script>
 
             $(document).ready(function(){

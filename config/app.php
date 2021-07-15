@@ -161,14 +161,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        
         /*
          * Package Service Providers...
          */
-
+        
         /*
-         * Application Service Providers...
-         */
+        * Application Service Providers...
+        */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -177,6 +177,8 @@ return [
         
         // Other service providers…
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
 
     ],
 
@@ -216,6 +218,8 @@ return [
         'Mail' => Illuminate\Support\Facades\Mail::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
         // 'Redis' => Illuminate\Support\Facades\Redis::class,

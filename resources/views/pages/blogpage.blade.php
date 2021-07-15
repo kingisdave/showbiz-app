@@ -24,28 +24,179 @@
                                         <p class="justify">{!! $oneBlog->blog_body !!}</p>
                                     </div>
                                     <div class="container m-2">
-                                        <h6 class="mb-3">Post your comment</h6>
-                                        <form class="form mt-3">
-                                            <div class="row my-1">
-                                                <label class="col-md-3 col-sm-4 col-12">Your Email</label>
-                                                <div class="form-group col-md-9 col-sm-8 col-12">
-                                                    <input type="email" class="form-control" name="email" placeholder="Enter your email" />
+                                        {{-- <h6 class="mb-3">Post your comment</h6>  --}}
+                                        <h5 class="m-2 text-center"><strong>Comment to join discussion</strong></h5>                                    
+                                        
+                                        <div class="card border-0 shadow m-1 mx-auto" style="border-radius: 13px">
+                                            <div class="card-body mx-auto">
+                                                <form class="form mt-3 mb-2">
+                                                    <div class="row my-2">
+                                                        <label class="col-md-3 col-sm-4 col-12">Your Email</label>
+                                                        <div class="form-group col-md-9 col-sm-8 col-12">
+                                                            <input type="email" class="form-control" name="email" placeholder="Enter your email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row my-2">
+                                                        <label class="col-md-3 col-sm-4 col-12">Comment</label>
+                                                        <div class="form-group col-md-9 col-sm-8 col-12">
+                                                            <textarea class="form-control" name="comment" placeholder="Write your comment here"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix mb-2">
+                                                        <button type="submit" class="btn btn-primary float-end">Post comment</button>
+                                                    </div>
+                                                </form>
+                                                <br/>
+                                                <div class="media border-0 shadow m-2 mt-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body mycomments">
+                                                        <span class="h4 text-dark">Adam Jansen</span><small class="float-right mt-2"><i>about 2 minutes ago</i></small>
+                                                        <p class="text-justify mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                        <div>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary" onclick="">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="media border-0 shadow m-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body">
+                                                        <span class="h4 text-dark">Kim Ryder </span><small class="float-right mt-2"><i>about 4 hours ago</i></small>
+                                                        <p class="text-justify mt-2">I'm in the middle of a timelapse animation myself! (Very different though.) Awesome stuff.</p>
+                                                        <div>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="media border-0 shadow m-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body mycomments">
+                                                        <span class="h4 text-dark">Nicolai Larson </span><small class="float-right mt-2"><i>10 hours ago</i></small>
+                                                        <p class="text-justify mt-2">The parallax is a little odd but O.o that house build is awesome!!.</p>
+                                                        <div>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="media border-0 shadow m-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body mycomments">
+                                                        <span class="h4 text-dark">Adam Jansen </span><small class="float-right mt-2"><i>about 2 minuts ago</i></small>
+                                                        <p>Story based around the idea of time lapse, animation to post soon!</p>
+                                                        <div class="m-1">
+                                                            <a href="">
+                                                                <img src="assets/images/dust.png" class="img-thumbnail shadow m-1" style="width:60px; height:60px"/>
+                                                            </a>
+                                                            <a href="">
+                                                                <img src="assets/images/dust.png" class="img-thumbnail shadow m-1" style="width:60px; height:60px"/>
+                                                            </a>
+                                                            <a href="">
+                                                                <img src="assets/images/dust.png" class="img-thumbnail shadow m-1" style="width:60px; height:60px"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                        </div>
+                                                        <div class="media border-0 shadow p-3">
+                                                            <img src="assets/images/dust.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                            <div class="media-body mycomments">
+                                                                <span class="h4 text-dark">John Smith </span><small class="float-right mt-2"><i>about 1 hour ago</i></small>
+                                                                <p>Wow impressive!</p>
+                                                                <div class="">
+                                                                    <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                                    <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                                    <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+
+                                                <div class="media border-0 shadow m-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body mycomments">
+                                                        <span class="h4 text-dark">Kim Ryder </span><small class="float-right mt-2"><i>about 4 hours ago</i></small>
+                                                        <p class="text-justify mt-2">I'm in the middle of a timelapse animation myself! (Very different though.) Awesome stuff.</p>
+                                                        <div>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="media border-0 shadow m-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body mycomments">
+                                                        <span class="h4 text-dark">Nicolai Larson </span><small class="float-right mt-2"><i>10 hours ago</i></small>
+                                                        <p class="text-justify mt-2">The parallax is a little odd but O.o that house build is awesome!!.</p>
+                                                        <div>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="media border-0 shadow m-2 mb-2 p-3 text-secondary">
+                                                    <img src="assets/images/dust.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px">
+                                                    <div class="media-body mycomments">
+                                                        <span class="h4 text-dark">Adam Jansen </span><small class="float-right mt-2"><i>about 2 minuts ago</i></small>
+                                                        <p class="text-justify mt-2">Story based around the idea of time lapse, animation to post soon!</p>
+                                                        <div class="m-1">
+                                                            <a href="">
+                                                                <img src="assets/images/dust.png" class="img-thumbnail shadow m-1" style="width:60px; height:60px"/>
+                                                            </a>
+                                                            <a href="">
+                                                                <img src="assets/images/dust.png" class="img-thumbnail shadow m-1" style="width:60px; height:60px"/>
+                                                            </a>
+                                                            <a href="">
+                                                                <img src="assets/images/dust.png" class="img-thumbnail shadow m-1" style="width:60px; height:60px"/>
+                                                            </a>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                            <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                        </div>
+                                                        <div class="media border-0 shadow p-3">
+                                                            <img src="assets/images/dust.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width:60px; height: 60px;">
+                                                            <div class="media-body mycomments">
+                                                                <span class="h4 text-dark">John Smith </span><small class="float-right mt-2"><i>about 1 hour ago</i></small>
+                                                                <p class="text-justify mt-2">Wow impressive!</p>
+                                                                <div class="">
+                                                                    <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-up"></i></button>
+                                                                    <button class="m-2 p-1 border-0 text-secondary"><i class="fa fa-thumbs-down"></i></button>
+                                                                    <button class="m-2 p-1 border-0 text-secondary">Reply</a>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="float-left m-1">
+                                                    <a href="#top" class="btn btn-default border shadow">
+                                                        Top<i class="fa fa-arrow-circle-up ms-2 px-1"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="text-center m-1">
+                                                    <a href="" class="btn btn-default px-3 border shadow">Load More...</a>
                                                 </div>
                                             </div>
-                                            <div class="row my-2">
-                                                <label class="col-md-3 col-sm-4 col-12">Comment</label>
-                                                <div class="form-group col-md-9 col-sm-8 col-12">
-                                                    <textarea class="form-control" name="comment" placeholder="Write your comment here"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix">
-                                                <button type="submit" class="btn btn-primary float-end">Post comment</button>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>    
+                                </div>
                             @else
-                                <div >
+                                <div>
                                     <span class="alert alert-danger">Blog Not Found</span>
                                 </div>
                             @endif
@@ -54,18 +205,20 @@
                                 <h4 class="my-4">Related News</h4>
                                 <div class="row mt-3 mb-3">
                                     @foreach ($otherBlogs as $relatedBlog)
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 card border-0 shadow m-2 mx-auto">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <img src="/storage/blogs/{{$relatedBlog->blogimage}}" class="img-fluid fluidImage" alt="{{$relatedBlog->blogimage}}">
-                                                </div>
-                                                <div class="col-8">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title"><strong>{{$relatedBlog->blog_title}}</strong><small class="float-end text-muted smallyText">4 mins</small></h5>
-                                                        {{-- <p class="card-text sideMaxSize">{{$relatedBlog->blog_body}}</p> --}}
-                                                        <p class="card-text sideMaxSize">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                                            <div class="card border-0 shadow my-2">
+                                                <a href="/blogs/{{$relatedBlog->id}}" class="row text-muted m-1 mx-auto">
+                                                    <div class="col-4">
+                                                        <img src="/storage/blogs/{{$relatedBlog->blogimage}}" class="img-fluid fluidImage" alt="{{$relatedBlog->blogimage}}">
                                                     </div>
-                                                </div>
+                                                    <div class="col-8">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title"><strong>{{$relatedBlog->blog_title}}</strong><small class="float-end text-muted smallyText">4 mins</small></h5>
+                                                            {{-- <p class="card-text sideMaxSize">{{$relatedBlog->blog_body}}</p> --}}
+                                                            <p class="card-text sideMaxSize">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>    
                                     @endforeach
@@ -169,7 +322,7 @@
                                     @foreach ($otherBlogs as $topBlog)
                                         <div class="d-flex myblogs pt-1 px-2 m-1">
                                             <img src="/storage/profileImages/{{$topBlog->blogger_pics}}" alt="{{$topBlog->blogger_pics}}" class="rounded-circle ms-1 me-3" style="width:25px; height: 25px" />                        
-                                            <p class=""><a href="#" class="text-reset">{{$topBlog->blog_title}}</a>
+                                            <p class=""><a href="/blogs/{{$topBlog->id}}" class="text-reset">{{$topBlog->blog_title}}</a>
                                                 {{-- <small class="ms-2"><a href="#" class="text-reset">{{$topBlog->blogger_name}}</a><i class="ms-2">12:59 Feb 19, 2016</i></small> --}}
                                                 <small class="ms-2"><a href="#" class="text-reset">{{$topBlog->blogger_name}}</a><i class="ms-2">{{$topBlog->created_at}}</i></small>
                                             </p>
@@ -209,7 +362,7 @@
                                     @foreach ($otherBlogs as $recentBlog)
                                         <div class="d-flex myblogs pt-1 px-2 m-1">
                                             <img src="/storage/profileImages/{{$recentBlog->blogger_pics}}" alt="{{$recentBlog->blogger_pics}}" class="rounded-circle ms-1 me-3" style="width:25px; height: 25px" />                        
-                                            <p class=""><a href="#" class="text-reset">{{$recentBlog->blog_title}}</a>
+                                            <p class=""><a href="/blogs/{{$recentBlog->id}}" class="text-reset">{{$recentBlog->blog_title}}</a>
                                                 <small class="ms-2"><a href="#" class="text-reset">{{$recentBlog->blogger_name}}</a><i class="ms-2">{{$recentBlog->created_at}}</i></small>
                                             </p>
                                         </div>

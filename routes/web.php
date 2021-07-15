@@ -15,6 +15,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ShopsController;
 use App\Http\Controllers\StocksController;
+use App\Http\Controllers\PaymentController;
+// use App\Http\Controllers\PayPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,12 +62,21 @@ Route::get('/index', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::post('dashboard/blog/category', [BlogCategoriesController::class, 'store']);
 Route::post('dashboard/store/category', [ProductCategoryController::class, 'store']);
-// Route::get('dashboard/blog/category', [BlogCategoryController::class, 'index']);
-// Route::resource('dashboard/blog/category', BlogCategoryController::class)->only(['index', 'store']);
+
 Route::resource('dashboard/blog', DashboardBlogsController::class);
 Route::resource('dashboard/store/order', OrdersController::class);
 Route::resource('dashboard/store/product', ProductsController::class);
 Route::resource('dashboard/store/stock', StocksController::class);
 Route::resource('/dashboard/store', ShopsController::class);
+
+// Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+// Route::post('/payment-page', [PaymentController::class, 'index']);
+// Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+Route::get('/verify-payment/{reference}', [PaymentController::class, 'verify']);
+
+
+// Route::get('handlepayment', [PayPalController::class, 'handlePayment'])->name('payment');
+// Route::get('cancelpayment', [PayPalController::class, 'cancelPayment'])->name('cancelled');
+// Route::get('paymentsuccess', [PayPalController::class, 'paymentSuccess'])->name('succeded');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

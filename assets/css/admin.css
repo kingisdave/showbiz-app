@@ -1,0 +1,191 @@
+*{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    /* text-decoration: none; */
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+} 
+body{
+    background: #fff;
+}
+#conta{
+  /*margin-top: 0px;*/
+        /* background: #b3e6ff !important; */
+    background: #e6eeff;
+    background: radial-gradient(circle, #e6eeff, #8cb7d4af, #e6eeff); /* Standard syntax (must be last) */
+    border-radius: 25px;
+    height: 90vh;
+    overflow: auto;
+}  
+.wrapper .hamburger{
+    width: 30px;
+    padding: 15px 17px;
+    cursor: pointer; 
+    position: fixed;
+    left: 3vh;
+    bottom: 5vh;
+}
+.wrapper .hamburger div{
+    width: 20px;
+    height: 2px;
+    background: #00091a !important;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+a{
+    text-decoration: none;
+}
+.navbar-brand{
+      font-size: 95%;
+}
+.navbar-brand.active{
+    margin-left: 10px;
+}
+.wrapper .sidebar{
+    position: fixed;
+    top: 2px;
+    left: 5px;
+    background: #fff !important;
+    width: 160px;
+    height: calc(100% - 5px);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    transition: all 0.3s ease;
+}
+.wrapper .sidebar ul{
+    padding: 0;
+}
+.wrapper .sidebar ul li a{
+    display: block;
+    padding: 20px;
+    position: relative;
+    font-size: 80%;
+    margin-bottom: 1px;
+    color: #00091a !important;
+    white-space: nowrap;
+    box-shadow: 2px 2px 4px #e6eeff;
+}
+.wrapper .sidebar ul li a:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: #8cb7d4af;
+    display: none; 
+}
+.wrapper .sidebar ul li a span.icon{
+    margin-right: 10px;
+    display: inline-block;
+}
+  
+.wrapper .sidebar ul li a span.title{
+    display: inline-block;
+    justify-content: center;
+}
+  
+.wrapper .sidebar ul li a:hover,
+  .wrapper .sidebar ul li a.active{
+      background: #fff;
+      background: radial-gradient(circle, #ffffff, #8cb7d4af, #ffffff);
+      color: #00091a;
+      border-left: 3px solid  #00091a;
+      text-shadow: 2px 1px #ccc;
+      font-weight: bold;
+      text-decoration: none;
+}
+.wrapper .sidebar ul li a:hover:before,
+  .wrapper .sidebar ul li a.active:before{
+    display: block;
+}
+.wrapper .main_container{
+    width: calc(100% - 150px);
+    margin-left: 160px;
+    transition: all 0.3s ease; 
+}
+.main_container ul li a{
+    color: #00091a;
+}
+.main_container ul li a sup{
+    position: relative;
+    font-size: 10px;
+    right: 13px;
+    top: -13px;
+}
+.main_container ul li span.h4{
+    position: relative;
+    right: -7px;
+    top: 3px;
+}
+.wrapper.active .sidebar{
+    width: 90px;
+}
+.wrapper.active .sidebar ul li a{
+    text-align: center;
+}
+.wrapper.active .sidebar ul li a span.icon{
+    margin: 0;
+}
+.wrapper.active .sidebar ul li a span.title{
+    margin-left: -7px;
+    display: block;
+    font-size: 10px;
+    text-decoration: none;
+    font-weight: lighter;
+} 
+.wrapper.active .main_container{
+    width: calc(100% - 70px);
+    margin-left: 80px;
+}
+div.dashboardBorder{
+    margin-top: -6px;
+}
+.overviewCard{
+    height: 20vh;
+    border-left: 5px solid #0066cc;
+    border-radius: 0 25px 25px 0;
+    padding: 10%;
+}
+.notifyCard{
+    height: 25vh;
+    border-radius: 25px;
+}
+.addBtn{
+    padding: 10px 20px !important;
+    font-weight: bold;
+    box-shadow: 5px 4px 3px #999 !important;
+}
+.blogsRows{
+    box-shadow: 1px 2px 1px #999;
+}
+.bloggerCard{
+    height: 40vh;
+}
+.bloggerImg{
+    height: 50%;
+}
+.bloggerCard div.card-body{
+    margin-top: -10%;
+    height:30%;
+}
+.bloggerCard div.card-body p{
+    max-height: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+}
+.footerDiv{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+@media (max-width: 450px) {
+    .main_container #dashboardTopNav img{
+        width: 80px;
+        height: 64px;
+    }
+}
+

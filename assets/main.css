@@ -1,0 +1,73 @@
+body {
+	margin:0px 0px 0px 0px;
+	padding:0px;
+	background-image:url(images/bg2.jpg);
+	scrollbar-3d-light-color:#ffffff;
+           scrollbar-arrow-color:#cccccc;
+           scrollbar-base-color:#ffffff;
+           scrollbar-dark-shadow-color:#ffffff;
+           scrollbar-face-color:#F5F5F5;
+           scrollbar-highlight-color:#ffffff;
+           scrollbar-shadow-color:grey;}
+
+h1 {
+	margin:0px 0px 0px 0px;
+	padding:0px;
+	font-size:24px Geneva, Arial, Helvetica, sans-serif;
+	font-weight:400;
+	color:#666666;
+	}
+h2 {
+	margin:10px 10px 10px 10px;
+	color:#000000;
+	font:18px Times, Arial, Helvetica, sans-serif;
+	font-weight:400;
+	padding:0px;
+	text-align:left;
+	}
+
+p.normal {
+	margin: 0px 0px 0px 20px;
+	color:#FF9900;
+	font:10px Geneva, Arial, Helvetica, sans-serif;
+	padding:0px;
+	text-align:left;
+}
+
+p.grey {
+	margin: 0px 0px 0px 20px;
+	color:#999999;
+	font:10px Geneva, Arial, Helvetica, sans-serif;
+	padding:0px;
+	text-align:left;
+}
+
+li {
+	margin:0px 0px 0px 0px;
+	color:#333333;
+	font:11px arial, helvetica, sans-serif;
+	padding:0px;
+}
+a {
+	color:#FFFFFF;
+	font-size:16px;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-weight:bold}
+	
+.title {  margin: 0px 0px 5px 10px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; text-indent: 20px; font-weight: bold; color:#ffffff}
+
+.title1 {  margin: 0px 0px 5px 10px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #6B97BC}
+
+.links {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; color: #FFFFFF; text-decoration: none}
+
+.links:hover { color: #FF0000; text-decoration: underline; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold}
+
+.subtitle { margin: 0px 0px 5px 10px; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #223695}
+
+.bullet {  list-style-image:  url(../images/bullet.gif)}
+
+.date {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #FFFFFF}
+
+.text {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; margin: 0px 15px 0px 15px; color: #6B97BC; line-height: 14px}
+
+.text1 {  font-family: Verdana, Arial, Helvetica, sans-serif; color: #ffffff; margin: 5px 0px 0px 20px; font-size: 10px; line-height: 13px}

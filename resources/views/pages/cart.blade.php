@@ -192,10 +192,10 @@
                                             </div> --}}
                                         @endif
                                         <!-- The Add To Product Modal -->
-                                        {{-- <form method="POST" action="dashboard/store/order"> --}}
-                                        <form method="POST" action="{{route('cart.update')}}">
+                                        {{-- <form method="POST" action="/cart"> --}}
+                                        <form method="POST" id="paymentForm" action="{{route('cart.update',auth()->user()->id)}}">
                                             @csrf
-                                            {{-- @method('PUT') --}}
+                                            @method('PUT')
                                             <div class="modal fade shadow" id="checkOutModal" tabindex="-1" aria-labelledby="checkOutModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                                     <div class="modal-content">
@@ -206,8 +206,13 @@
                                                             @endforeach --}}
                                                         {{-- @end if --}}
                                                         <div class="modal-body">
+                                                            @if($carts)
+                                                                <input type="text" name="amount" id="amount" value="{{$carts->sum('product_price')}}" hidden />
+                                                            @else
+                                                            @endif
                                                             <h5 class="fw-bold">Enter Address</h5>
                                                             <input type="number" name="buyer_id" id="buyer_id" value="{{auth()->user()->id}}" hidden />
+                                                            <input type="email" name="buyer_email" id="buyer_email" value="{{auth()->user()->email}}" hidden />
                                                             @if(count($userAddress) > 0)
                                                                 @foreach ($userAddress as $address)
                                                                     <div class="container-fliud">
@@ -267,8 +272,25 @@
                                                                         </div>
                                                                         <div class="col-12 form-group">
                                                                             <button class="btn btn-block form-control btn-danger text-white text-center" type="submit" >
-                                                                                <i class="fa fa-shopping-bag me-2"></i>Checkout</button>
+                                                                                <i class="fa fa-shopping-bag me-2"></i>Checkout to Pay On-Delivery</button>
                                                                         </div>
+                                                                        {{-- <h5 class="text-center mt-2">OR</h5>
+                                                                        <div class="row">
+                                                                            <p class="text-center"><small>Make your payments now</small></p>
+                                                                            <div class="col-4 form-group">
+                                                                                <button class="btn btn-block form-control border border-success shadow text-center text-success">
+                                                                                    <i class="fa fa-google-wallet"></i>Checkout with Wallet</button>
+                                                                            </div>
+                                                                            <div class="col-4 form-group">
+                                                                                <button class="btn btn-block form-control border border-primary shadow text-center text-primary">
+                                                                                    <i class="fa fa-paypal"></i>Checkout with Paypal</button>
+                                                                            </div>
+                                                                            <div class="col-4 form-group">
+                                                                                <button class="btn btn-block form-control border border-danger shadow text-center text-danger" >
+                                                                                    <span class="col-4"><i class="fa fa-credit-card"></i></span><span class="col-8">Checkout with Card</span></button>
+                                                                            </div>
+                                                                        </div> --}}
+                                                                        
                                                                     </div>
                                                                 @endforeach
                                                             @else
@@ -329,10 +351,28 @@
                                                                     </div>
                                                                     <div class="col-12 form-group">
                                                                         <button class="btn btn-block form-control btn-danger text-white text-center" type="submit" >
-                                                                            <i class="fa fa-shopping-bag me-2"></i>Checkout</button>
+                                                                            <small><i class="fa fa-shopping-bag me-2"></i>Checkout</small></button>
                                                                     </div>
                                                                 </div>
                                                             @endif
+                                                            
+                                                            <h5 class="text-center mt-2">OR</h5>
+                                                            <div class="row">
+                                                                <p class="text-center"><small>Make your payments now</small></p>
+                                                                <div class="col-4 form-group">
+                                                                    <button type="button" class="btn btn-block btn-success form-control shadow text-center" onclick="payWithPaystack(event)">
+                                                                        <small><i class="mx-2 text-light fa fa-google-wallet"></i>With Paystack</small></button>
+                                                                </div>
+                                                                <div class="col-4 form-group">
+                                                                    {{-- <a href="https://www.paypal.com/in/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/in/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" border="0" alt="PayPal Logo"></a> --}}
+                                                                    <button type="button" class="btn btn-block btn-primary form-control shadow text-center">
+                                                                        <small><i class="mx-2 text-light fa fa-paypal"></i>With Paypal</button></small>
+                                                                </div>
+                                                                <div class="col-4 form-group">
+                                                                    <button type="button" class="btn btn-block form-control btn-danger shadow text-center">
+                                                                        <small><i class="mx-2 text-light fa fa-credit-card"></i>With Amazon</a></small>
+                                                                </div>
+                                                            </div>
                                                             {{-- <div class="input-group mb-3">
                                                                 <div class="input-group-text">
                                                                     <input class="form-check-input mt-0" type="radio" value="" aria-label="Checkbox for following text input">
@@ -359,4 +399,66 @@
                 </div>
             </div>
         </div>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            const paymentForm = document.getElementById('paymentForm');
+            paymentForm.addEventListener("submit", payWithPaystack, false);
+            function payWithPaystack(e){
+                e.preventDefault();
+                console.log("User email to pay " +document.getElementById("buyer_email").value);
+                console.log("Amount to be paid " +document.getElementById("amount").value);
+                let handler = PaystackPop.setup({
+                    key: 'pk_test_836f27d95f58c27cc2b39124208dcebd09121dd8', // Replace with your public key
+                    email: document.getElementById("buyer_email").value,
+                    amount: document.getElementById("amount").value * 100,
+                    ref: ''+Math.floor((Math.random() * 1000000000) + 1),  // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                    // label: "Optional string that replaces customer email"
+                    onClose: function(){
+                        alert('Window closed.');
+                    },
+                    callback: function(response){
+                        let reference = response.reference;
+                        $.ajax({
+                            type: "GET",
+                            url: "{{url('verify-payment')}}/"+reference,
+                            // uploadUrl: '{{url("product/create")}}',
+                            // data: {
+                            //     reference
+                            // },
+                            success: function (response){
+                                console.log(response)
+                            }
+                        });
+                        // let message = 'Payment complete! Reference: ' + response.reference;
+                        // alert(message);
+                    }
+                });
+                handler.openIframe();
+            }
+            // function payWithPaystack(){
+            //   var handler = PaystackPop.setup({
+            //     key: 'pk_test_836f27d95f58c27cc2b39124208dcebd09121dd8',
+            //     email: 'customer@email.com',
+            //     amount: 10000,
+            //     ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+            //     metadata: {
+            //        custom_fields: [
+            //           {
+            //               display_name: "Mobile Number",
+            //               variable_name: "mobile_number",
+            //               value: "+2348012345678"
+            //           }
+            //        ]
+            //     },
+            //     callback: function(response){
+            //         alert('success. transaction ref is ' + response.reference);
+            //     },
+            //     onClose: function(){
+            //         alert('window closed');
+            //     }
+            //   });
+            //   handler.openIframe();
+            // }
+          </script>
     @endsection

@@ -34,26 +34,68 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        @if(count($clientProducts) > 0)
-                                            @foreach ($clientProducts as $item)
-                                                <div class="col-md-3 col-sm-6">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal{{$item->id}}" data-bs-whatever="@productOne">
-                                                        <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">
-                                                            <img src="/storage/{{substr($item->file[0]->stockImages, 7)}}" class="mx-auto"
-                                                                alt="{{substr($item->file[0]->stockImages, 7)}}" />
-                                                            <div class="card-img-overlay d-flex align-items-end padOff">
-                                                                <div class="infoTextBelow mx-auto text-center">
-                                                                    <h5 class="card-title fw-bold">{{$item->product_name}}</h5>
-                                                                    <p class="card-text"><small class="fw-bold">{{$item->product_price}}</small></p>
+                                        @if ($clientProducts)
+                                            @if(count($clientProducts) > 0)
+                                                @foreach ($clientProducts as $item)
+                                                    <div class="col-md-3 col-sm-6">
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal{{$item->id}}" data-bs-whatever="@productOne">
+                                                            <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">
+                                                                <img src="/storage/{{substr($item->file[0]->stockImages, 7)}}" class="mx-auto"
+                                                                    alt="{{substr($item->file[0]->stockImages, 7)}}" />
+                                                                <div class="card-img-overlay d-flex align-items-end padOff">
+                                                                    <div class="infoTextBelow mx-auto text-center">
+                                                                        <h5 class="card-title fw-bold">{{$item->product_name}}</h5>
+                                                                        <p class="card-text"><small class="fw-bold">{{$item->product_price}}</small></p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </a>
-                                                </div>    
-                                            @endforeach
+                                                        </a>
+                                                    </div>    
+                                                @endforeach
+                                            @else
+                                            @endif    
                                         @else
-                                        
+                                            <div class="col-md-4 col-sm-6">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-bs-whatever="@productOne">
+                                                    <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">
+                                                        <img src="images/shoe.jpg" class="mx-auto" alt="shoe">
+                                                        <div class="card-img-overlay d-flex align-items-end padOff">
+                                                            <div class="infoTextBelow mx-auto text-center">
+                                                                <h5 class="card-title fw-bold">Card title</h5>
+                                                                <p class="card-text"><small class="fw-bold">$2334.55</small></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal">
+                                                    <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">
+                                                        <img src="images/shoe.jpg" class="mx-auto" alt="shoe">
+                                                        <div class="card-img-overlay d-flex align-items-end padOff">
+                                                            <div class="infoTextBelow mx-auto text-center">
+                                                                <h5 class="card-title fw-bold">Card title</h5>
+                                                                <p class="card-text"><small class="fw-bold">$2334.55</small></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal">
+                                                    <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">
+                                                        <img src="images/shoe.jpg" class="mx-auto" alt="shoe">
+                                                        <div class="card-img-overlay d-flex align-items-end padOff">
+                                                            <div class="infoTextBelow mx-auto text-center">
+                                                                <h5 class="card-title fw-bold">Card title</h5>
+                                                                <p class="card-text"><small class="fw-bold">$2334.55</small></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>    
                                         @endif
+                                        
                                         {{-- <div class="col-md-4 col-sm-6">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-bs-whatever="@productOne">
                                                 <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">

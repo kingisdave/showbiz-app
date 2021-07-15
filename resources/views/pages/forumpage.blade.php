@@ -15,12 +15,12 @@
                                         <div class="card border-0 shadow m-1 myCardStyle">
                                             <a href="/blogs/{{$singleBlog->id}}" class="text-decoration-none text-reset">
                                                 <img src="/storage/blogs/{{$singleBlog->blogimage}}" alt="{{$singleBlog->blogimage}}" class="card-img-top cardImage" />
-                                                <div class="card-body">
-                                                    <h6 class="card-title"><strong>{{$singleBlog->blog_title}}</strong><small class="float-end text-muted smallyText">3 mins</small></h6>
-                                                    <div class="clearfix mt-2">
-                                                        <p class="float-start namedP"><img src="images/male.jpg" class="rounded-circle me-2" width="20" /> Anonymous reelrlerelreerer</p>
-                                                        <a href="#" class="small text-reset float-end text-decoration-none readMore">Read more <i class="fas fa-angle-double-right"></i></a>
-                                                    </div>
+                                                <div class="px-2 pt-2 text-center border-bottom">
+                                                    <h6 class="card-title"><strong>{{$singleBlog->blog_title}}</strong></h6>
+                                                </div>
+                                                <div class="clearfix mt-2 px-2 pb-2">
+                                                    <p class="float-start namedP"><img src="images/male.jpg" class="rounded-circle me-2" width="20" /> Anonymous reelrlerelreerer</p>
+                                                    <small class="float-end text-muted smallyText">3 mins</small>
                                                 </div>
                                             </a>
                                         </div>    
