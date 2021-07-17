@@ -427,7 +427,16 @@
                             //     reference
                             // },
                             success: function (response){
-                                console.log(response)
+                                console.log(response);
+                                if(resonse[0].status == true){
+                                    $('form').prepend(`
+                                        <h2>{response[0].message}</h2>
+                                    `);
+                                }else{
+                                    $('form').prepend(`
+                                        <h2>Failed to verify payment</h2>
+                                    `);
+                                }
                             }
                         });
                         // let message = 'Payment complete! Reference: ' + response.reference;
