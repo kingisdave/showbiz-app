@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if($this->app->environment('production')) {
+            \URL::forceScheme('https');
+        }
+
         Blade::directive('shortWord', function ($words) {
             if(strlen($words) >= 5){
                 return `substr($words, 0, 5)... `;
