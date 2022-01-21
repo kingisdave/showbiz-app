@@ -11,7 +11,7 @@ use App\Models\User;
 class DashboardBlogsController extends Controller
 {
     public function __construct()
-    {   
+    {
         $this->middleware('auth');
     }
     /**
@@ -26,7 +26,7 @@ class DashboardBlogsController extends Controller
         // $blogCat = auth()->user()->BlogCategory;
         $blogcats = BlogCategory::orderBy('blog_category', 'asc')->get();
         $myblogs = auth()->user()->Blog;
-        
+
         return view('pages.privates.blogger')
                 ->with('blogcats', $blogcats)
                 ->with('myblogs', $myblogs)
@@ -62,7 +62,7 @@ class DashboardBlogsController extends Controller
             $fileExt = $request->file('blogimage')->getClientOriginalExtension();
             // Filename to Store
             $fileNameToStore = $filename.time().'.'.$fileExt;
-            // uploaded Image 
+            // uploaded Image
             $storagePath = $request->file('blogimage')->storeAs('public/blogs', $fileNameToStore);
         } else {
             $fileNameToStore = 'bloggers.jpg';
@@ -73,17 +73,17 @@ class DashboardBlogsController extends Controller
         $userId = auth()->user()->id;
         $createBlog = Blog::create([
             'user_id' => $userId,
-            'blog_title' => $request->blog_title, 
-            'blog_body' => $request->blog_body, 
-            'blogimage' => $fileNameToStore, 
+            'blog_title' => $request->blog_title,
+            'blog_body' => $request->blog_body,
+            'blogimage' => $fileNameToStore,
             'blog_category_id' => $blogCatId
-        ]); 
+        ]);
         if($createBlog){
             return redirect()->back()->with("successMessage", "Blog Posted");
         } else{
             return redirect()->back()->with("errorMessage", "You have been followed. Check yourself");
         }
-        
+
     }
 
     /**
@@ -132,7 +132,7 @@ class DashboardBlogsController extends Controller
             $fileExt = $request->file('blogimage')->getClientOriginalExtension();
             // Filename to Store
             $fileNameToStore = $filename.time().'.'.$fileExt;
-            // uploaded Image 
+            // uploaded Image
             $storagePath = $request->file('blogimage')->storeAs('public/blogs', $fileNameToStore);
         } else {
             $fileNameToStore = 'bloggers.jpg';
@@ -142,9 +142,9 @@ class DashboardBlogsController extends Controller
         $pickBlog = Blog::find($blog->id);
         $upBlog = $pickBlog->update([
                         'blog_category_id' => $blogCatId,
-                        'blog_title'=> $request->blog_title, 
+                        'blog_title'=> $request->blog_title,
                         'blog_body'=> $request->blog_body,
-                        'blogimage' => $fileNameToStore, 
+                        'blogimage' => $fileNameToStore,
                     ]);
         if($upBlog){
             return redirect("/dashboard/blog")->with('successMessage', "Your blog has been updated");

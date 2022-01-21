@@ -12,14 +12,14 @@
                     <h4 class="fw-bolder mt-2">Product</h4>
                     @if(count($products) > 0)
                         {{-- <p class="small">{{count($products)}} new stocks available</p> --}}
-                        @foreach($products as $product) 
-                            @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 ) 
+                        @foreach($products as $product)
+                            @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 )
                                 @if ($loop->count > 0)
                                     <p class="small">{{$loop->count}} new products available</p>
                                     @break
                                 @else
                                     <p class="small">No New product available yet</p>
-                                    @break                        
+                                    @break
                                 @endif
                             @endif
                         @endforeach
@@ -28,8 +28,8 @@
                     @endif
                     <hr />
                     <div class="row shopOrdersRow bg-light">
-                        <ul class="nav nav-tabs bg-info pt-2 small" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
+                        <ul class="nav nav-tabs bg-info pt-2 small orderstype" id="myTab" role="tablist">
+                            <li class="nav-item nitems" role="presentation">
                                 <button class="nav-link active" id="allProducts-tab" data-bs-toggle="tab" data-bs-target="#allProducts" type="button" role="tab" aria-controls="allProducts" aria-selected="true">All Products</button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -46,12 +46,12 @@
                             <div class="tab-pane fade show active" id="allProducts" role="tabpanel" aria-labelledby="allProducts-tab">
                                 <div class="row">
                                     @if(count($products) > 0)
-                                        @foreach($products as $product)                                   
+                                        @foreach($products as $product)
                                             <div class="col-md-3 col-sm-4 col-12 newPcard">
                                                 {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$product->id}}" data-bs-whatever="@productOne"> --}}
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal{{$product->id}}" data-bs-whatever="@productOne">
                                                     <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
-                                                        <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                        <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" class="mx-auto"
                                                             alt="{{substr($product->file[0]->stockImages, 7)}}">
                                                         <div class="card-img-overlay d-flex align-items-end padOff">
                                                             <div class="infoTextBelow belowText mx-auto small">
@@ -128,20 +128,20 @@
                             <div class="tab-pane fade" id="newProduct" role="tabpanel" aria-labelledby="newProduct-tab">
                                 <div class="row">
                                     @if(count($products) > 0)
-                                        @foreach($products as $product) 
-                                            @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 )                                       
+                                        @foreach($products as $product)
+                                            @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) < 2 )
                                                 <div class="col-md-3 col-sm-4 col-12 newPcard">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal{{$product->id}}" data-bs-whatever="@productOne">
                                                     {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$product->id}}" data-bs-whatever="@productOne"> --}}
                                                         <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
-                                                            <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                            <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                 alt="{{substr($product->file[0]->stockImages, 7)}}">
                                                             <div class="card-img-overlay d-flex align-items-end padOff">
                                                                 <div class="infoTextBelow belowText mx-auto small">
                                                                     <h6 class="fw-bold text-center">{{$product->stock_name}}</h6>
                                                                     <p class="clearfix">
                                                                         <span class="small float-start">$ {{$product->product_price}}</span>
-                                                                        {{-- @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) > 2 )           
+                                                                        {{-- @if(\Carbon\Carbon::now()->diffInWeeks($product->created_at) > 2 )
                                                                             <span class="small float-end bg-primary p-1">Old</span>
                                                                         @else --}}
                                                                             <span class="small float-end bg-danger p-1">New</span>
@@ -282,18 +282,18 @@
                                                         <div id="carouselExampleSlidesOnly" class="col-12 carousel slide" data-bs-ride="carousel">
                                                             <div class="carousel-inner">
                                                                 <div class="carousel-item active">
-                                                                    <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}" 
+                                                                    <img src="/storage/{{substr($product->file[0]->stockImages, 7)}}"
                                                                         class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[0]->stockImages, 7)}}" />
                                                                 </div>
                                                                 @if (count($product->file) > 1)
                                                                     <div class="carousel-item">
-                                                                        <img src="/storage/{{substr($product->file[1]->stockImages, 7)}}" 
+                                                                        <img src="/storage/{{substr($product->file[1]->stockImages, 7)}}"
                                                                                 class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[1]->stockImages, 7)}}" />
                                                                     </div>
                                                                 @endif
                                                                 @if (count($product->file) > 2)
                                                                     <div class="carousel-item">
-                                                                        <img src="/storage/{{substr($product->file[2]->stockImages, 7)}}" 
+                                                                        <img src="/storage/{{substr($product->file[2]->stockImages, 7)}}"
                                                                             class="d-block w-100 rounded shadow" height="250" alt="{{substr($product->file[2]->stockImages, 7)}}" />
                                                                     </div>
                                                                 @endif
@@ -359,10 +359,10 @@
                         @endforeach
                     @endif
                     <div class="row mt-2">
-                        
+
                     </div>
-                    
-                   
+
+
                 </div>
                 <!-- footer details -->
                 @include('includes.footer')

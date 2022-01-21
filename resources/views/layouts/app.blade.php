@@ -26,7 +26,7 @@
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ecommerce.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('images/flash-banner.png') }}" type="image/x-icon" />
-    
+
 </head>
 <body class="antialiased">
     <div id="app">
@@ -38,18 +38,18 @@
     {{-- <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script> --}}
     <script>
         $(document).ready(function(){
-                                                            
+
         //ClassicEditor.create($('#edit_about_text').get()[0]); this or below part.
         //to elobrate I have added more codes
             ClassicEditor.create( document.querySelector( '#editor' ))
             .catch( error => {
-                console.log( error );
+                console.log( "error" );
             } );
         });
     </script>
 </body>
 {{-- <body>
-    
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -75,7 +75,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

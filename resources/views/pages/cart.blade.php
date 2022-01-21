@@ -413,7 +413,6 @@
                     email: document.getElementById("buyer_email").value,
                     amount: document.getElementById("amount").value * 100,
                     ref: ''+Math.floor((Math.random() * 1000000000) + 1),  // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-                    // label: "Optional string that replaces customer email"
                     onClose: function(){
                         alert('Window closed.');
                     },
@@ -428,14 +427,15 @@
                             // },
                             success: function (response){
                                 console.log(response);
-                                if(resonse[0].status == true){
-                                    $('form').prepend(`
-                                        <h2>{response[0].message}</h2>
-                                    `);
+                                if(response[0].status == true){
+                                    location.href = "http://www.example.com/ThankYou.html"
+                                //     $('form').prepend(`
+                                //         <h2>{response[0].message}</h2>
+                                //     `);
                                 }else{
-                                    $('form').prepend(`
-                                        <h2>Failed to verify payment</h2>
-                                    `);
+                                //     $('form').prepend(`
+                                //         <h2>Failed to verify payment</h2>
+                                //     `);
                                 }
                             }
                         });

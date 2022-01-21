@@ -30,21 +30,21 @@
                     @if (session('successMessage'))
                         <div class="text-center">
                             <span class="alert alert-success logalert rounded-pill" role="alert">
-                                {{ session('successMessage') }}
+                                <small>{{ session('successMessage') }}</small>
                             </span>
                         </div>
                     @endif
                     @if(session('errorMessage'))
                         <div class="mx-auto">
                             <span class="alert alert-danger logalert rounded-pill" role="alert">
-                                {{ session('errorMessage') }}
+                                <small>{{ session('errorMessage') }}</small>
                             </span>
                         </div>
                     @endif
                     <hr />
                     <div class="row shopOrdersRow bg-light">
-                        <ul class="nav nav-tabs bg-info pt-2" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
+                        <ul class="nav nav-tabs bg-info pt-2 orderstype" id="myTab" role="tablist">
+                            <li class="nav-item nitems" role="presentation">
                                 <button class="nav-link active" id="allOrders-tab" data-bs-toggle="tab" data-bs-target="#allOrders" type="button" role="tab" aria-controls="allOrders" aria-selected="true">All Orders</button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -193,7 +193,8 @@
                                                     @else
                                                         <div class="alert alert-danger">
                                                             <span class="text-center">There are no dispatched orders</span>
-                                                        </div>   
+                                                        </div>
+                                                        @break;   
                                                     @endif
                                                 @endforeach
                                             </tbody>
@@ -290,6 +291,7 @@
                                                         <div class="alert alert-danger">
                                                             <span class="text-center">There are no completed orders</span>
                                                         </div>
+                                                        {{-- @break; --}}
                                                     @endif    
                                                 @endforeach
                                                 

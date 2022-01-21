@@ -2,7 +2,6 @@
     margin: 0;
     list-style: none;
     padding: 0;
-    /* text-decoration: none; */
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 } 
@@ -10,8 +9,6 @@ body{
     background: #fff;
 }
 #conta{
-  /*margin-top: 0px;*/
-        /* background: #b3e6ff !important; */
     background: #e6eeff;
     background: radial-gradient(circle, #e6eeff, #8cb7d4af, #e6eeff); /* Standard syntax (must be last) */
     border-radius: 25px;
@@ -19,11 +16,11 @@ body{
     overflow: auto;
 }  
 .wrapper .hamburger{
-    width: 30px;
+    width: 25px;
     padding: 15px 17px;
     cursor: pointer; 
     position: fixed;
-    left: 3vh;
+    left: 2vh;
     bottom: 5vh;
 }
 .wrapper .hamburger div{
@@ -47,11 +44,11 @@ a{
     top: 2px;
     left: 5px;
     background: #fff !important;
-    width: 160px;
+    width: 120px;
     height: calc(100% - 5px);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 .wrapper .sidebar ul{
     padding: 0;
@@ -60,7 +57,7 @@ a{
     display: block;
     padding: 20px;
     position: relative;
-    font-size: 80%;
+    font-size: 0.62em;
     margin-bottom: 1px;
     color: #00091a !important;
     white-space: nowrap;
@@ -77,7 +74,7 @@ a{
     display: none; 
 }
 .wrapper .sidebar ul li a span.icon{
-    margin-right: 10px;
+    margin-right: 9px;
     display: inline-block;
 }
   
@@ -101,8 +98,8 @@ a{
     display: block;
 }
 .wrapper .main_container{
-    width: calc(100% - 150px);
-    margin-left: 160px;
+    width: calc(100% - 105px);
+    margin-left: 105px;
     transition: all 0.3s ease; 
 }
 .main_container ul li a{
@@ -110,34 +107,37 @@ a{
 }
 .main_container ul li a sup{
     position: relative;
-    font-size: 10px;
-    right: 13px;
+    font-size: 8px;
+    right: 8px;
     top: -13px;
 }
 .main_container ul li span.h4{
     position: relative;
-    right: -7px;
+    right: -9px;
     top: 3px;
 }
 .wrapper.active .sidebar{
-    width: 90px;
+    width: 50px;
 }
 .wrapper.active .sidebar ul li a{
     text-align: center;
+    padding: 20px 10px;
 }
 .wrapper.active .sidebar ul li a span.icon{
     margin: 0;
+    font-size: 15px;
 }
 .wrapper.active .sidebar ul li a span.title{
     margin-left: -7px;
-    display: block;
-    font-size: 10px;
+    /* display: block; */
+    font-size: 9px;
     text-decoration: none;
-    font-weight: lighter;
+    font-weight: light;
+    display: none;
 } 
 .wrapper.active .main_container{
-    width: calc(100% - 70px);
-    margin-left: 80px;
+    width: calc(100% - 40px);
+    margin-left: 40px;
 }
 div.dashboardBorder{
     margin-top: -6px;
@@ -217,6 +217,14 @@ div.dashboardBorder{
     overflow: hidden;
     overflow-y: auto;
 }
+.shopOrdersRow ul.orderstype{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+}
+.shopOrdersRow ul.orderstype li.nitems{
+    flex-shrink: 0;
+}
 .newPcard{
     height: 34vh;
 }
@@ -270,8 +278,12 @@ div.dashboardBorder{
 
 @media (max-width: 450px) {
     .main_container #dashboardTopNav img{
-        width: 80px;
+        width: 85px;
         height: 64px;
+    }
+    #dashboardTopNav ul.dashnavy{
+        margin-left: -11px;
+        font-size: 14px;
     }
 }
 

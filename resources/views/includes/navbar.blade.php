@@ -58,7 +58,50 @@
                 </ul>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md navbar-light border-top">
+        <nav class="navbar navbar-light border-top">
+            <div class="container myContain">
+                <ul class="nav mx-auto">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    @auth
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
+                        </li>
+                    @endauth
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="/services">Services</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="/shop">Shop now</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="/blogs">Forums</a>
+                    </li>
+                    {{-- @guest
+
+                        @if (Route::has('login'))
+                            <li class="nav-item mx-1">
+                                <a class="btn btn-primary shadow" href="{{ route('login') }}">Sign in</a>
+                            </li>
+                        @endif
+                    @endguest --}}
+                            {{-- <a class="btn btn-primary shadow" href="/login" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</a> --}}
+                </ul>
+                {{-- <ul class=" ml-auto mb-lg-0"> --}}
+                    <!-- <li class="nav-item">
+                        <button class="nav-link me-2 btn btn-light" aria-current="page" href="#">Sign in</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link me-2 btn btn-light" aria-current="page" href="#">Sign up</button>
+                    </li> -->
+                {{-- </ul> --}}
+            </div>
+        </nav>
+        {{-- <nav class="navbar navbar-expand-md navbar-light border-top">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -85,15 +128,6 @@
                         <li class="nav-item mx-1">
                             <a class="nav-link" href="/blogs">Forums</a>
                         </li>
-                        {{-- @guest
-
-                            @if (Route::has('login'))
-                                <li class="nav-item mx-1">
-                                    <a class="btn btn-primary shadow" href="{{ route('login') }}">Sign in</a>
-                                </li>
-                            @endif
-                        @endguest --}}
-                                {{-- <a class="btn btn-primary shadow" href="/login" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</a> --}}
                     </ul>
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                         <!-- <li class="nav-item">
@@ -105,7 +139,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
     </div>
 
     <!-- The Signup Modal -->

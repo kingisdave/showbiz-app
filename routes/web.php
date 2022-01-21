@@ -46,7 +46,7 @@ Route::get('/contact', [PagesController::class, 'contact']);
 // Route::get('/blog', function () {
     //     return view('pages.blogpage');
     // });
-    
+
 Route::resource('blogs', BlogsController::class);
 Route::resource('blog.comments', CommentsController::class)->shallow();
 Route::get('/shop', [PagesController::class, 'shops']);

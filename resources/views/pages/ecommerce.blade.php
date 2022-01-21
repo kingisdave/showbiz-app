@@ -8,7 +8,7 @@
                     <div class="card border-0 eCard mt-3 p-2 mx-auto shadow">
                         <div class="card-body p-2 eCardBody">
                             @include('includes.ecommerceTop')
-                            
+
                             @if (session('successMessage'))
                                 <div class="text-center">
                                     <span class="alert alert-success logalert rounded-pill" role="alert">
@@ -50,10 +50,10 @@
                                                                 </div>
                                                             </div>
                                                         </a>
-                                                    </div>    
+                                                    </div>
                                                 @endforeach
                                             @else
-                                            @endif    
+                                            @endif
                                         @else
                                             <div class="col-md-4 col-sm-6">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-bs-whatever="@productOne">
@@ -93,9 +93,9 @@
                                                         </div>
                                                     </div>
                                                 </a>
-                                            </div>    
+                                            </div>
                                         @endif
-                                        
+
                                         {{-- <div class="col-md-4 col-sm-6">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#productDetailsModal" data-bs-whatever="@productOne">
                                                 <div class="card mx-2 mb-4 shadow cardHeight d-flex align-self-end">
@@ -135,14 +135,14 @@
                                             </div>
                                             </a>
                                         </div> --}}
-                                        
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
         <!-- The Each Product details Modal -->
         @if(count($clientProducts) > 0)
@@ -150,7 +150,7 @@
                 <div class="modal fade productDetails" id="productDetailsModal{{$item->id}}" tabindex="-1" aria-labelledby="productDetailsModalLabel{{$item->id}}" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
-                    
+
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <div class="container-fliud">

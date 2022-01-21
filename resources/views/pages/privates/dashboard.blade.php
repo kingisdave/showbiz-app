@@ -11,35 +11,35 @@
                     <hr />
                     <h5>Complete Overview</h5>
                     <div class="row">
-                        <div class="col-md-3 col-sm-6 col-12">
+                        <div class="col-md-3 col-6">
                             <div class="card m-1 shadow overviewCard">
                                 {{-- <h4 class="fw-bolder lh-1">0</h4> --}}
                                 @if(count($myblogs) > 0)
-                                    <h4 class="fw-bolder lh-1">{{count($myblogs)}}</h4>
+                                    <h6 class="fw-bolder">{{count($myblogs)}}</h6>
                                 @else
-                                    <h4 class="fw-bolder lh-1">0</h4>
+                                    <h6 class="fw-bolder">0</h6>
                                 @endif
-                                <p class="small lh-1">Your Blogs</p> 
+                                <p class="small lh-1"><small>Your Blogs</small></p> 
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-12">
+                        <div class="col-md-3 col-6">
                             <div class="card m-1 shadow overviewCard">
-                                <h4 class="fw-bolder lh-1 ">0</h4>
-                                <p class="small lh-1">Store Items</p>
+                                <h6 class="fw-bolder">0</h6>
+                                <p class="small lh-1"><small>Store Items</small></p>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-12">
+                        <div class="col-md-3 col-6">
                             <div class="card m-1 shadow overviewCard">
-                                <h4 class="fw-bolder lh-1 ">0</h4>
-                                <p class="small lh-1">Comments</p>
+                                <h6 class="fw-bolder">0</h6>
+                                <p class="small lh-1"><small>Comments</small></p>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-12">
+                        <div class="col-md-3 col-6">
                             <div class="card m-1 shadow overviewCard">
-                                <h4 class="fw-bolder">Account Details</h4>
-                                <p class="small lh-1 fst-italic">
+                                <h6 class="fw-bolder">Account Details</h6>
+                                <p class="small lh-1 fst-italic"><small>
                                     <a href="#" class="text-decoration-underline"><small>Click to update your account profile</small></a>
-                                </p>
+                                </small></p>
                             </div>        
                         </div>
                     </div>

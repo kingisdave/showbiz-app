@@ -177,7 +177,6 @@
             </div>
 		</div>
         <script>
-
             $(document).ready(function(){
 			// $("#loadBtn").click(function(){
 			// 	postImg.hidden=false;

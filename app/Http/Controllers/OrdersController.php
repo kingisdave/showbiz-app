@@ -39,7 +39,7 @@ class OrdersController extends Controller
                     $order['userAddress'] = $buyerAdd->street_address.", ".$buyerAdd->city_address.", ".$buyerAdd->state_address.", ".$buyerAdd->country_address; 
                 }
             //    return UserAddress::where('id', $order->user_address_id)->where('user_id', $order->buyer_id)->get(); 
-                array_push($myOrders, $order);
+                array_push($myOrders, $order);  
             }
         }
         return view('pages.privates.order')->with('myOrders', $myOrders);

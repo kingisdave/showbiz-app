@@ -10,8 +10,18 @@ body{
 nav{
     background: #3366cc !important;
 }
+nav .myContain ul{
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+nav .myContain ul li{ 
+    justify-content: space-between;
+    flex-shrink: 0;
+}
 .navbar a{
     color: #ffffff !important;
+    flex-wrap: nowrap;
     text-shadow: 2px 2px 4px #000;
 }
 .registerWrapper{

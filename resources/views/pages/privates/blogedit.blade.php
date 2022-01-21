@@ -9,18 +9,17 @@
             <div class="main_container">
                 @include('includes.dashboardheader')
                 <div class="container-fluid dashboardBorder pt-2">
-                    <div class="text-center">
-                        <h2 class="fw-bolder mt-2">Edit Your Blog</h2>
-                    </div>
                     <div class="row">
-                        <div class="card px-5 col mx-auto border-0 shadow">
-                            <div class="card-body px-5 mt-4">
+                        <div class="card col mx-auto border-0 shadow">
+                            <div class="card-body mt-2">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">Edit Your Blog</h5>
+                                </div>
                                 @if (session('errorMessage'))
                                 <div class="alert alert-danger logalert rounded-pill" role="alert">
                                     {{ session('errorMessage') }}
                                 </div>   
                                 @endif
-                                {{-- @if($specblog) --}}
                                 <form class="form row" method="POST" action="{{route('blog.update', $specblog->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
@@ -76,7 +75,6 @@
                                         <button type="submit" class="form-control btn btn-info">Submit Post</button>
                                     </div>
                                 </form>
-                                {{-- @endif --}}
                             </div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
     <a href="#" class="me-auto" id="topbrand">
         <img src="/images/flash-banner.png" class="bannerImg me-auto" alt="banner" width="170" height="70" />
     </a>
-    <ul class="nav m-2">
+    <ul class="nav my-2 dashnavy">
         <li class="nav-item">
           <a href="/" class="nav-link text-light mt-2">Home</a>
         </li>
@@ -16,7 +16,7 @@
             </div>
           </div>
         </form>
-        <li class="nav-item dropdown m-2 mt-3">
+        <li class="nav-item dropdown mt-3">
             <a class="nav-brand dropdown-toggle text-light" href="#" id="dropNavLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->user_name }}
             </a>

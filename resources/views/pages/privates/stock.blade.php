@@ -12,15 +12,15 @@
                     <h4 class="fw-bolder mt-2">Stock</h4>
                     @if(count($stocks) > 0)
                         {{-- <p class="small">{{count($stocks)}} new stocks available</p> --}}
-                        @foreach($stocks as $stock) 
-                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) < 2 ) 
+                        @foreach($stocks as $stock)
+                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) < 2 )
                                 @if ($loop->count > 0)
                                     <p class="small">{{$loop->count}} new stocks available</p>
                                     @break
                                 @else
                                     <p class="small">No New stocks available yet</p>
-                                    @break                        
-                                @endif    
+                                    @break
+                                @endif
                             @endif
                         @endforeach
                     @else
@@ -28,31 +28,31 @@
                     @endif
                     @if (session('successMessage'))
                         <div class="text-center">
-                            <span class="alert alert-success logalert rounded-pill" role="alert">
-                                {{ session('successMessage') }}
+                            <span class="alert alert-success logalert rounded-pill small" role="alert">
+                                <small>{{ session('successMessage') }}</small>
                             </span>
                         </div>
                     @endif
                     @if(session('errorMessage'))
                         <div class="mx-auto">
-                            <span class="alert alert-danger logalert rounded-pill" role="alert">
-                                {{ session('errorMessage') }}
+                            <span class="alert alert-danger logalert rounded-pill small" role="alert">
+                                <small>{{ session('errorMessage') }}</small>
                             </span>
                         </div>
                     @endif
                     <hr />
                     <div class="row shopOrdersRow bg-light">
-                        <ul class="nav nav-tabs bg-info pt-2 small" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
+                        <ul class="nav nav-tabs bg-info pt-2 small orderstype" id="myTab" role="tablist">
+                            <li class="nav-item nitems" role="presentation">
                                 <button class="nav-link active" id="allStocks-tab" data-bs-toggle="tab" data-bs-target="#allStocks" type="button" role="tab" aria-controls="allStocks" aria-selected="true">All Stocks</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item nitems" role="presentation">
                                 <button class="nav-link" id="newStock-tab" data-bs-toggle="tab" data-bs-target="#newStock" type="button" role="tab" aria-controls="newStock" aria-selected="false">New</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item nitems" role="presentation">
                                 <button class="nav-link" id="oldStock-tab" data-bs-toggle="tab" data-bs-target="#oldStock" type="button" role="tab" aria-controls="oldStock" aria-selected="false">Old</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item nitems" role="presentation">
                                 <button class="nav-link" id="expiredProduct-tab" data-bs-toggle="tab" data-bs-target="#expiredProduct" type="button" role="tab" aria-controls="expiredProduct" aria-selected="false">Expired</button>
                             </li>
                         </ul>
@@ -78,14 +78,14 @@
                                                         @foreach($stocks as $stock)
                                                             <tr class="stocksRow">
                                                                 <td>
-                                                                    @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )           
+                                                                    @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )
                                                                         <span class="small bg-primary text-light p-1">Old</span>
                                                                     @else
                                                                         <span class="small bg-danger text-light p-1">New</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                                    <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                         alt="{{substr($stock->file[0]->stockImages, 7)}}" height="50" width="50">
                                                                 </td>
                                                                 <td><a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
@@ -105,7 +105,7 @@
                                                                     <span class="small">$ {{$stock->cost_price}}</span>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="small">$ {{$stock->selling_price}}</span> 
+                                                                    <span class="small">$ {{$stock->selling_price}}</span>
                                                                 </td>
                                                                 @if(($stock->stock_quantity - $stock->proRem) > 0)
                                                                     <td class="text-danger">
@@ -113,7 +113,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <button class="btn btn-success text-white shadow" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
-                                                                            <i class="fa fa-arrow-right me-2"></i>Add to Products 
+                                                                            <i class="fa fa-arrow-right me-2"></i>Add to Products
                                                                         </button>
                                                                     </td>
                                                                 @else
@@ -132,7 +132,7 @@
                                             </div>
                                             {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
                                                 <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
-                                                    <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                    <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                         alt="{{substr($stock->file[0]->stockImages, 7)}}">
                                                     <div class="card-img-overlay d-flex align-items-end padOff">
                                                         <div class="infoTextBelow belowText mx-auto small">
@@ -141,7 +141,7 @@
                                                             </h6>
                                                             <p class="clearfix">
                                                                 <span class="small float-start">$ {{$stock->selling_price}}</span>
-                                                                @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )           
+                                                                @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )
                                                                     <span class="small float-end bg-primary p-1">Old</span>
                                                                 @else
                                                                     <span class="small float-end bg-danger p-1">New</span>
@@ -177,14 +177,14 @@
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($stocks as $stock) 
+                                                        @foreach($stocks as $stock)
                                                             @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) < 2 )
                                                                 <tr class="stocksRow">
                                                                     <td>
                                                                         <span class="small bg-danger p-1">New</span>
                                                                     </td>
                                                                     <td>
-                                                                        <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                                        <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                             alt="{{substr($stock->file[0]->stockImages, 7)}}" height="50" width="50">
                                                                     </td>
                                                                     <td><a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
@@ -204,7 +204,7 @@
                                                                         <span class="small">$ {{$stock->cost_price}}</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="small">$ {{$stock->selling_price}}</span> 
+                                                                        <span class="small">$ {{$stock->selling_price}}</span>
                                                                     </td>
                                                                     @if(($stock->stock_quantity - $stock->proRem) > 0)
                                                                         <td class="text-danger">
@@ -212,7 +212,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <button class="btn btn-success text-white shadow" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
-                                                                                <i class="fa fa-arrow-right me-2"></i>Add to Products 
+                                                                                <i class="fa fa-arrow-right me-2"></i>Add to Products
                                                                             </button>
                                                                         </td>
                                                                     @else
@@ -231,12 +231,12 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        {{-- @foreach($stocks as $stock) 
-                                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) < 2 )                                       
+                                        {{-- @foreach($stocks as $stock)
+                                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) < 2 )
                                                 <div class="col-md-3 col-sm-4 col-12 newPcard">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
                                                         <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
-                                                            <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                            <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                 alt="{{substr($stock->file[0]->stockImages, 7)}}">
                                                             <div class="card-img-overlay d-flex align-items-end padOff">
                                                                 <div class="infoTextBelow belowText mx-auto small">
@@ -277,14 +277,14 @@
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($stocks as $stock) 
-                                                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )  
+                                                        @foreach($stocks as $stock)
+                                                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )
                                                                 <tr class="stocksRow">
                                                                     <td>
                                                                         <span class="small bg-primary p-1">Old</span>
                                                                     </td>
                                                                     <td>
-                                                                        <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                                        <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                             alt="{{substr($stock->file[0]->stockImages, 7)}}" height="50" width="50">
                                                                     </td>
                                                                     <td><a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
@@ -304,7 +304,7 @@
                                                                         <span class="small">$ {{$stock->cost_price}}</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="small">$ {{$stock->selling_price}}</span> 
+                                                                        <span class="small">$ {{$stock->selling_price}}</span>
                                                                     </td>
                                                                     @if(($stock->stock_quantity - $stock->proRem) > 0)
                                                                         <td class="text-danger">
@@ -312,7 +312,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <button class="btn btn-success text-white shadow" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
-                                                                                <i class="fa fa-arrow-right me-2"></i>Add to Products 
+                                                                                <i class="fa fa-arrow-right me-2"></i>Add to Products
                                                                             </button>
                                                                         </td>
                                                                     @else
@@ -331,12 +331,12 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        {{-- @foreach($stocks as $stock) 
-                                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )                                       
+                                        {{-- @foreach($stocks as $stock)
+                                            @if(\Carbon\Carbon::now()->diffInWeeks($stock->created_at) > 2 )
                                                 <div class="col-md-3 col-sm-4 col-12 newPcard">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
                                                         <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
-                                                            <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                            <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                 alt="{{substr($stock->file[0]->stockImages, 7)}}">
                                                             <div class="card-img-overlay d-flex align-items-end padOff">
                                                                 <div class="infoTextBelow belowText mx-auto small">
@@ -377,14 +377,14 @@
                                                         <th>Operations</th>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($stocks as $stock) 
-                                                            @if(\Carbon\Carbon::now()->diffInDays($stock->expiry_date) < 1 )  
+                                                        @foreach($stocks as $stock)
+                                                            @if(\Carbon\Carbon::now()->diffInDays($stock->expiry_date) < 1 )
                                                                 <tr class="stocksRow">
                                                                     <td>
                                                                         <span class="small bg-secondary p-1">Expired</span>
                                                                     </td>
                                                                     <td>
-                                                                        <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                                        <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                             alt="{{substr($stock->file[0]->stockImages, 7)}}" height="50" width="50">
                                                                     </td>
                                                                     <td><a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
@@ -404,7 +404,7 @@
                                                                         <span class="small">$ {{$stock->cost_price}}</span>
                                                                     </td>
                                                                     <td>
-                                                                        <span class="small">$ {{$stock->selling_price}}</span> 
+                                                                        <span class="small">$ {{$stock->selling_price}}</span>
                                                                     </td>
                                                                     <td>
                                                                         <i class="fa fa-check-square-o fa-2x ms-2 text-success"></i>
@@ -423,12 +423,12 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        {{-- @foreach($stocks as $stock) 
-                                            @if(\Carbon\Carbon::now()->diffInDays($stock->expiry_date) < 1 )                                       
+                                        {{-- @foreach($stocks as $stock)
+                                            @if(\Carbon\Carbon::now()->diffInDays($stock->expiry_date) < 1 )
                                                 <div class="col-md-3 col-sm-4 col-12 newPcard">
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#stockDetailsModal{{$stock->id}}" data-bs-whatever="@productOne">
                                                         <div class="card mx-2 mb-4 shadow productCard d-flex align-self-end">
-                                                            <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto" 
+                                                            <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" class="mx-auto"
                                                                 alt="{{substr($stock->file[0]->stockImages, 7)}}">
                                                             <div class="card-img-overlay d-flex align-items-end padOff">
                                                                 <div class="infoTextBelow belowText mx-auto small">
@@ -454,7 +454,7 @@
                         </div>
                     </div>
 
-                    <!-- Click to add New product button -->									
+                    <!-- Click to add New product button -->
                     <div class="fixed-bottom mb-3 me-4 p-4">
                         <button class="btn btn-primary rounded-circle float-end p-3 shadow" data-bs-toggle="modal" data-bs-target="#addStockModal" title="Add Stock Button">
                             <span class="fa fa-plus"></span>
@@ -471,11 +471,11 @@
                                     <div class="modal-body">
                                         <h5 class="fw-bold">Add New Stock</h5>
                                         <div class="container-fliud">
-                                            
+
                                             <div class="form-group mt-1 mb-2">
                                                 <select name="product_category" id="product_category" class="form-control @error('product_category') is-invalid @enderror" required>
                                                     <option value="">--Choose a Category--</option>
-                                                    @if(count($prodcats) > 0) 
+                                                    @if(count($prodcats) > 0)
                                                         @foreach($prodcats as $category)
                                                             <option value="{{$category->product_category}}">{{$category->product_category}}</option>
                                                         @endforeach
@@ -542,7 +542,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row mt-2">
                                                 <div class="form-group col-6">
                                                     <label for="cost_price">Cost Price</label>
@@ -599,18 +599,18 @@
                                                         <div id="carouselExampleSlidesOnly" class="col-12 carousel slide" data-bs-ride="carousel">
                                                             <div class="carousel-inner">
                                                                 <div class="carousel-item active">
-                                                                    <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}" 
+                                                                    <img src="/storage/{{substr($stock->file[0]->stockImages, 7)}}"
                                                                         class="d-block w-100 rounded shadow" height="250" alt="{{substr($stock->file[0]->stockImages, 7)}}" />
                                                                 </div>
                                                                 @if (count($stock->file) > 1)
                                                                     <div class="carousel-item">
-                                                                        <img src="/storage/{{substr($stock->file[1]->stockImages, 7)}}" 
+                                                                        <img src="/storage/{{substr($stock->file[1]->stockImages, 7)}}"
                                                                             class="d-block w-100 rounded shadow" height="250" alt="{{substr($stock->file[1]->stockImages, 7)}}" />
                                                                     </div>
                                                                 @endif
                                                                 @if (count($stock->file) > 2)
                                                                     <div class="carousel-item">
-                                                                        <img src="/storage/{{substr($stock->file[2]->stockImages, 7)}}" 
+                                                                        <img src="/storage/{{substr($stock->file[2]->stockImages, 7)}}"
                                                                             class="d-block w-100 rounded shadow" height="250" alt="{{substr($stock->file[2]->stockImages, 7)}}" />
                                                                     </div>
                                                                 @endif
@@ -654,10 +654,10 @@
                                                             </p>
                                                             {{-- <div class="text-center"> --}}
                                                                 {{-- <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#addProductModal{{$stock->id}}" title="Add To Product">
-                                                                    <i class="fa fa-arrow-right me-2"></i>Add to Products 
+                                                                    <i class="fa fa-arrow-right me-2"></i>Add to Products
                                                                 </button> --}}
                                                                 {{-- <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#AddProductModal{{$stock->id}}" title="Add To Product">
-                                                                    <i class="fa fa-arrow-right me-2" onclick="var pp = <?php echo 'makeProduct'.$stock->id ?>; pp.submit() "></i>Add to Products 
+                                                                    <i class="fa fa-arrow-right me-2" onclick="var pp = <?php echo 'makeProduct'.$stock->id ?>; pp.submit() "></i>Add to Products
                                                                 </button>
                                                                 <form method="POST" id="{{'makeProduct'.$stock->id}}" action="{{route('product.create', $stock->id)}}">
                                                                     @csrf
@@ -697,7 +697,7 @@
                                                 <div class="container-fliud">
                                                     <div class="form-group mt-1 mb-2">
                                                         <select name="product_category" id="product_category" class="form-control @error('product_category') is-invalid @enderror" required>
-                                                            @if(count($prodcats) > 0) 
+                                                            @if(count($prodcats) > 0)
                                                                 @foreach($prodcats as $category)
                                                                     <option value="{{$category->product_category}}">{{$category->product_category}}</option>
                                                                 @endforeach
@@ -762,7 +762,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="row mt-2">
                                                         <div class="form-group col-6">
                                                             <label for="cost_price">Cost Price</label>
@@ -860,7 +860,7 @@
 
                         @endforeach
                     @endif
-                    
+
                 </div>
                 <!-- footer details -->
                 @include('includes.footer')
