@@ -27,12 +27,25 @@ class GoogleLoginController extends Controller
         return redirect()->to('/index');
 
     }
+    // protected function sendFailedResponse($msg = null)
+    // {
+    //     dd('mistake');
+    //     return redirect()->route('login')
+    //         ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
+    // }
 
     function createUser($getInfo,$provider){
 
         $user = User::where('provider_id', $getInfo->id)->first();
-
-        if (!$user) {
+         // if user already found
+        if ($user) {
+            // update the avatar and provider that might have changed
+            $user->update([
+                'provider' => $provider,
+                'provider_id' => $getInfo->id,
+                'access_token' => $getInfo->token
+            ]);
+        } else {
             $user = User::create([
                 'full_name' => $getInfo->name,
                 'user_name' => $getInfo->name,

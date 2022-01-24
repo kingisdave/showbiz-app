@@ -14,9 +14,10 @@ return [
     |
     */
     'google' => [
-        'client_id' => '557307274392-4pqnstck0q20cegh5gbh9hamih6nuas2.apps.googleusercontent.com',
-        'client_secret' => '-MLN538TFDLkEgUEgYwrevDQ',
-        'redirect' => 'https://showbiz-app.herokuapp.com/callback/google',
+        'client_id' => env('GOOGLE_LOG_ID'),
+        'client_secret' => env('GOOGLE_LOG_SECRET'),
+        'redirect' => env('APP_URL').'/callback/google',
+        // 'redirect' => 'https://showbiz-app.herokuapp.com/callback/google',
         // 'redirect' => 'http://127.0.0.1:8000/callback/google',
     ],
 
