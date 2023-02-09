@@ -3,13 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ config('app.name', 'Showbiz') }}</title>
+    <meta name="google-site-verification" content="et4e-kOo3OACh70arRObMUOjQJ7O66zz7cjEXFnRW-c" />
     <meta name="description" http-equiv="Content-Type" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="CoderDevs">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Showbiz') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
